@@ -1,0 +1,40 @@
+import React form 'react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+import BottomCard from '../components/BottomCard'
+
+export default (item, firstItemInDay) => {
+
+  return (
+    <TouchableOpacity
+      activeOpacity={0.6}
+      underlayColor="#DDDDDD"
+      onPress={() => alert('Pressed!')}
+      style={ styles.card }
+    >
+      <Text style={ styles.title }>
+        { item.title }
+      </Text>
+      <Text style={ styles.body }>
+        { item.body }
+      </Text>
+      <BottomCard tags={ item.tags } priority={ item.priority }/>
+    </TouchableOpacity>
+    );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+    marginTop: 15,
+    padding: 12,
+    borderRadius: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  body: {
+    fontWeight: '300',
+  }
+});
