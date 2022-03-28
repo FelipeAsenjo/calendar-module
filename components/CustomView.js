@@ -3,12 +3,13 @@ import { useTheme } from '@react-navigation/native';
 
 export default (props) => {
   const { colors } = useTheme()
+  const { children } = props
 
   return (
     <View 
       style={ [styles.container, {backgroundColor: colors.primary}] }
     >
-      { props.children }      
+      { children }      
     </View>
   );
 }

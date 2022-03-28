@@ -10,7 +10,7 @@ export default (props) => {
 
   return (
     <View style={ styles.container }> 
-      { tags.map( (tag, idx) => <Pill tag={ tag } key={ idx }/>) }
+      { tags.map( (tag, idx) => <Pill background={ colors.secondary } tag={ tag } key={ idx }/>) }
       <Text style={ [styles.priority, {color: colors.taskDone}] }>{ priority }</Text>
     </View>
   );

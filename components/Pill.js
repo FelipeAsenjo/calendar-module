@@ -3,11 +3,11 @@ import { useTheme } from '@react-navigation/native';
 
 export default (props) => {
   const { colors } = useTheme()
-  const { tag } = props
+  const { tag, background } = props
 
   return (
     <Text 
-      style={ [styles.pill, {backgroundColor: colors.secondary, color: colors.light}] }>
+      style={ [styles.pill, {backgroundColor: background, color: colors.light}] }>
         { tag }
     </Text>
   );
