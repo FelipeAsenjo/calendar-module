@@ -1,20 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 export default (props) => {
-  const { name } = props
+  const { colors } = useTheme()
+  const { tag } = props
 
   return (
-    <View> 
-      <Text>{ name }</Text>
-    </View>
+    <Text 
+      style={ [styles.pill, {backgroundColor: colors.secondary, color: colors.light}] }>
+        { tag }
+    </Text>
   );
 }
 
 const styles = StyleSheet.create({
   pill: {
-
-  },
-  text: {
-
+    marginRight: 5,
+    paddingHorizontal: 5,
+    borderRadius: 15,
+    fontSize: 12,
   }
 })

@@ -16,7 +16,7 @@ const MyTheme = {
     ...DefaultTheme.colors,
     secondary: '#931323',
     primary: '#333',
-    taskDone: 'rgba(255, 255, 255, 0.5)',
+    taskDone: 'rgba(0, 0, 0, 0.4)',
     light: '#fff'
   }
 }

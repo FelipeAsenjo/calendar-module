@@ -1,4 +1,4 @@
-import React form 'react'
+import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import BottomCard from '../components/BottomCard'
@@ -16,7 +16,7 @@ export default (item, firstItemInDay) => {
         { item.title }
       </Text>
       <Text style={ styles.body }>
-        { item.body }
+        { item.description }
       </Text>
       <BottomCard tags={ item.tags } priority={ item.priority }/>
     </TouchableOpacity>
@@ -26,15 +26,17 @@ export default (item, firstItemInDay) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    marginTop: 15,
+    marginTop: 12,
+    marginRight: 12,
     padding: 12,
     borderRadius: 10,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 5 
   },
   body: {
-    fontWeight: '300',
+    marginBottom: 10
   }
 });
