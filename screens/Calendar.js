@@ -4,7 +4,7 @@ import CustomView from '../components/CustomView';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
 import { useTheme } from '@react-navigation/native';
 
-import { DataContext } from '../App'
+import { DataContext } from '../provider/context'
 
 import TaskCard from '../components/TaskCard'
 
