@@ -8,7 +8,7 @@ import Calendar from './screens/Calendar'
 import Todo from './screens/Todo'
 import Notes from './screens/Notes'
 
-import { DataContext, data } from './provider/context'
+import { DataContext, calendarData } from './provider/context'
 
 const Drawer = createDrawerNavigator()
 
@@ -25,7 +25,7 @@ const MyTheme = {
 
 export default function App() {
   return (
-    <DataContext.Provider value={ data }>
+    <DataContext.Provider value={ calendarData }>
       <NavigationContainer theme={ MyTheme }>
         <Drawer.Navigator initialRouteName='Calendar' 
           screenOptions = {{

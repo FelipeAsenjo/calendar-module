@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-import CustomView from '../components/CustomView';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
 import { useTheme } from '@react-navigation/native';
 
 import { DataContext } from '../provider/context'
 
+import CustomView from '../components/CustomView';
 import TaskCard from '../components/TaskCard'
 
 export default () => {
@@ -23,7 +23,7 @@ export default () => {
           dayTextColor: colors.light,
           monthTextColor: colors.light,
         }}
-        items={ data }
+        items={ data.calendar }
         renderItem={ TaskCard }
         showOnlySelectedDayItems={ true }
       />

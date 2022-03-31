@@ -1,13 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
+import { DataContext } from '../provider/context'
+
+import CustomView from '../components/CustomView';
+import TaskCard from '../components/TaskCard';
+
+
 export default () => {
   const { colors } = useTheme()
 
   return (
-    <View style={ [styles.container, {backgroundColor: colors.primary}] }>
+    <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
       <Text>Soy Todo</Text>
-    </View>
+    </CustomView>
   );
 }
 
