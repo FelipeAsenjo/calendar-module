@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
+import { Agenda } from 'react-native-calendars'
 import { useTheme } from '@react-navigation/native';
 
 import { DataContext } from '../provider/context'
 
 import CustomView from '../components/CustomView';
-import TaskCard from '../components/TaskCard'
+import CalendarCard from '../components/CalendarCard'
 
 const renderCalendar = ( data ) => {
     let agendaFormat = {}
@@ -27,8 +26,6 @@ export default () => {
 
   const formatedData = renderCalendar( data ) 
 
-  console.log( formatedData )
-
   return (
     <CustomView>
       <Agenda 
@@ -41,7 +38,7 @@ export default () => {
           monthTextColor: colors.light,
         }}
         items={ formatedData } 
-        renderItem={ TaskCard }
+        renderItem={ CalendarCard }
         showOnlySelectedDayItems={ true }
       />
     </CustomView> 

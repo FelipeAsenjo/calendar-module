@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import BottomCard from '../components/BottomCard'
 
-export default(props) => {
-  const { todo } = props
+export default(item) => {
 
   return (
     <TouchableOpacity
@@ -14,12 +13,12 @@ export default(props) => {
       style={ styles.card }
     >
       <Text style={ styles.title }>
-        { todo.title }
+        { item.title }
       </Text>
       <Text style={ styles.body }>
-        { todo.description }
+        { item.description }
       </Text>
-      <BottomCard tags={ todo.tags } priority={ todo.priority }/>
+      <BottomCard tags={ item.tags } priority={ item.priority }/>
     </TouchableOpacity>
     );
 }
@@ -27,7 +26,7 @@ export default(props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    marginTop: 16,
+    marginTop: 12,
     marginHorizontal: 12,
     padding: 12,
     borderRadius: 10,

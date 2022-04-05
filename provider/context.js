@@ -11,7 +11,7 @@ export const context = {
        isTodo: false,
        hasPeriod: false,
        period: {},
-       date: '2022-04-04',
+       date: '2022-04-05',
        time: null,
        tags: ['Home'],
        priority: 1000
@@ -23,7 +23,7 @@ export const context = {
        isTodo: false,
        hasPeriod: false,
        period: {},
-       date: '2022-04-04',
+       date: '2022-04-05',
        time: null,
        tags: ['Work'],
        priority: 600
@@ -35,7 +35,7 @@ export const context = {
        isTodo: false,
        hasPeriod: false,
        period: {},
-       date: '2022-04-04',
+       date: '2022-04-05',
        time: null,
        tags: ['Home', 'Idea'],
        priority: 1000

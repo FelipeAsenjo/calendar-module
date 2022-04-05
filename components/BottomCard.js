@@ -7,7 +7,6 @@ import Pill from './Pill';
 export default (props) => {
   const { colors } = useTheme()
   const { tags, priority } = props
-
   return (
     <View style={ styles.container }> 
       { tags.map( (tag, idx) => <Pill background={ colors.secondary } tag={ tag } key={ idx }/>) }

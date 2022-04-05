@@ -27,7 +27,7 @@ export default function App() {
   return (
     <DataContext.Provider value={ context }>
       <NavigationContainer theme={ MyTheme }>
-        <Drawer.Navigator initialRouteName='Calendar' 
+        <Drawer.Navigator initialRouteName='Todo' 
           screenOptions = {{
             headerStyle: {
               backgroundColor: '#931323'
