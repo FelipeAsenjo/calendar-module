@@ -1,13 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext } from 'react'
+import { StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+
+import { DataContext } from '../provider/context'
+
+import CustomView from '../components/CustomView';
+import TaskCard from '../components/TaskCard';
 
 export default () => {
   const { colors } = useTheme()
+  const { data } = useContext( DataContext )
+
+  const notes = data.filter( x => !x.date && !x.isTodo )
 
   return (
-    <View style={ [styles.container, {backgroundColor: colors.primary}] }>
-      <Text>Soy Notes</Text>
-    </View>
+    <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
+      { notes.map( note => <TaskCard task={ note } key={ note.id } />) }
+    </CustomView>
   );
 }
 

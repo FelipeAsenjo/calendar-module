@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 import { DataContext } from '../provider/context'
@@ -16,7 +16,7 @@ export default () => {
   
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
-      { todos.map( todo => <TaskCard todo={ todo } id={ todo.id } /> ) }
+      { todos.map( todo => <TaskCard task={ todo } key={ todo.id } /> ) }
     </CustomView>
   );
 }

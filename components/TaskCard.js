@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import BottomCard from '../components/BottomCard'
 
 export default(props) => {
-  const { todo } = props
+  const { task } = props
 
   return (
     <TouchableOpacity
@@ -14,12 +14,12 @@ export default(props) => {
       style={ styles.card }
     >
       <Text style={ styles.title }>
-        { todo.title }
+        { task.title }
       </Text>
       <Text style={ styles.body }>
-        { todo.description }
+        { task.description }
       </Text>
-      <BottomCard tags={ todo.tags } priority={ todo.priority }/>
+      <BottomCard tags={ task.tags } priority={ task.priority }/>
     </TouchableOpacity>
     );
 }
