@@ -6,7 +6,7 @@ import { DataContext } from '../provider/context'
 
 import CustomView from '../components/CustomView';
 import TaskCard from '../components/TaskCard';
-
+import AddButton from '../components/AddButton'
 
 export default () => {
   const { colors } = useTheme()
@@ -17,6 +17,7 @@ export default () => {
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
       { todos.map( todo => <TaskCard task={ todo } key={ todo.id } /> ) }
+      <AddButton />
     </CustomView>
   );
 }

@@ -6,6 +6,7 @@ import { DataContext } from '../provider/context'
 
 import CustomView from '../components/CustomView';
 import CalendarCard from '../components/CalendarCard'
+import AddButton from '../components/AddButton'
 
 const renderCalendar = ( data ) => {
     let agendaFormat = {}
@@ -41,6 +42,7 @@ export default () => {
         renderItem={ CalendarCard }
         showOnlySelectedDayItems={ true }
       />
+      <AddButton />
     </CustomView> 
   );
 }

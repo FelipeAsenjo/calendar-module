@@ -11,6 +11,7 @@ export default(props) => {
       activeOpacity={0.6}
       underlayColor="#DDDDDD"
       onPress={() => alert('Pressed!')}
+      onLongPress={() => alert('Long Press!!')}
       style={ styles.card }
     >
       <Text style={ styles.title }>
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     padding: 12,
     borderRadius: 10,
+    elevation: 20,
   },
   title: {
     fontSize: 16,

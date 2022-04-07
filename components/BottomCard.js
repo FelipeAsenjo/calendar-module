@@ -4,6 +4,8 @@ import { useTheme } from '@react-navigation/native';
 
 import Pill from './Pill';
 
+// cambiar el tag de color dinamicamente
+
 export default (props) => {
   const { colors } = useTheme()
   const { tags, priority } = props
