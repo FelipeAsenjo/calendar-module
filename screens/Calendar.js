@@ -5,7 +5,7 @@ import { useTheme } from '@react-navigation/native';
 import { DataContext } from '../provider/context'
 
 import CustomView from '../components/CustomView';
-import CalendarCard from '../components/CalendarCard'
+import TaskCard from '../components/TaskCard'
 import AddButton from '../components/AddButton'
 
 const renderCalendar = ( data ) => {
@@ -21,7 +21,7 @@ const renderCalendar = ( data ) => {
     return agendaFormat
   }
 
-export default () => {
+export default ({ route }) => {
   const { colors } = useTheme()
   const { data } = useContext( DataContext )
 
@@ -39,7 +39,7 @@ export default () => {
           monthTextColor: colors.light,
         }}
         items={ formatedData } 
-        renderItem={ CalendarCard }
+        renderItem={( item ) => <TaskCard item={ item } route={ route.name } />}
         showOnlySelectedDayItems={ true }
       />
       <AddButton />

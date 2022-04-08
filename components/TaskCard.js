@@ -1,26 +1,27 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import BottomCard from './BottomCard'
+import BottomCard from '../components/BottomCard'
 import DropdownMenu from './DropdownMenu'
 
 export default(props) => {
-  const { task } = props
+  let { route, item } = props
 
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      underlayColor="#ddd"
+      underlayColor="#DDDDDD"
       onPress={() => alert('Pressed!')}
       style={ styles.card }
     >
       <Text style={ styles.title }>
-        { task.title }
+        { item.title }
       </Text>
-      <DropdownMenu id={ task.id }/>
+      <DropdownMenu id={ item.id }/>
       <Text style={ styles.body }>
-        { task.description }
+        { item.description }
       </Text>
-      <BottomCard tags={ task.tags } priority={ task.priority }/>
+      <BottomCard tags={ item.tags } priority={ item.priority }/>
     </TouchableOpacity>
     );
 }
@@ -28,7 +29,7 @@ export default(props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    marginTop: 16,
+    marginTop: 12,
     marginHorizontal: 12,
     padding: 12,
     borderRadius: 10,

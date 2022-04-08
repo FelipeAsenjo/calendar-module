@@ -21,11 +21,11 @@ export default (props) => {
         />}
         onRequestClose={toggle}
       >
-        <MenuItem onPress={toggle}>Menu item 1</MenuItem>
-        <MenuItem onPress={toggle}>Menu item 2</MenuItem>
+        <MenuItem onPress={toggle}>Edit</MenuItem>
+        <MenuItem onPress={toggle}>Add tag</MenuItem>
         <MenuItem disabled>Disabled item</MenuItem>
         <MenuDivider />
-        <MenuItem onPress={toggle}>Menu item 4</MenuItem>
+        <MenuItem onPress={toggle}>Delete</MenuItem>
       </Menu>
     </View>
   );
