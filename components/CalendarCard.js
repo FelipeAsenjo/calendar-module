@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import BottomCard from '../components/BottomCard'
+import DropdownMenu from './DropdownMenu'
 
 export default(item) => {
 
@@ -10,12 +11,12 @@ export default(item) => {
       activeOpacity={0.6}
       underlayColor="#DDDDDD"
       onPress={() => alert('Pressed!')}
-      onLongPress={() => alert('Long Press!!')}
       style={ styles.card }
     >
       <Text style={ styles.title }>
         { item.title }
       </Text>
+      <DropdownMenu id={ item.id }/>
       <Text style={ styles.body }>
         { item.description }
       </Text>

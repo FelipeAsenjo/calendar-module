@@ -1,7 +1,7 @@
-import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import BottomCard from '../components/BottomCard'
+import BottomCard from './BottomCard'
+import DropdownMenu from './DropdownMenu'
 
 export default(props) => {
   const { task } = props
@@ -9,14 +9,14 @@ export default(props) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      underlayColor="#DDDDDD"
+      underlayColor="#ddd"
       onPress={() => alert('Pressed!')}
-      onLongPress={() => alert('Long Press!!')}
       style={ styles.card }
     >
       <Text style={ styles.title }>
         { task.title }
       </Text>
+      <DropdownMenu id={ task.id }/>
       <Text style={ styles.body }>
         { task.description }
       </Text>
