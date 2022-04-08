@@ -16,7 +16,7 @@ export default ({ route }) => {
 
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
-      { notes.map( note => <TaskCard item={ note } route={ route } key={ note.id } />) }
+      { notes.map( note => <TaskCard item={ note } route={ route.name } key={ note.id } />) }
       <AddButton />
     </CustomView>
   );

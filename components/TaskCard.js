@@ -17,7 +17,7 @@ export default(props) => {
       <Text style={ styles.title }>
         { item.title }
       </Text>
-      <DropdownMenu id={ item.id }/>
+      <DropdownMenu id={ item.id } route={ route } />
       <Text style={ styles.body }>
         { item.description }
       </Text>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     marginBottom: 5, 
   },
   body: {
-    marginBottom: 10
+    marginBottom: 10,
+    paddingRight: 20
   }
 });

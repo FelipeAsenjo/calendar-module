@@ -16,7 +16,7 @@ export default ({ route }) => {
   
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>
-      { todos.map( todo => <TaskCard item={ todo } route={ route } key={ todo.id } /> ) }
+      { todos.map( todo => <TaskCard item={ todo } route={ route.name } key={ todo.id } /> ) }
       <AddButton />
     </CustomView>
   );

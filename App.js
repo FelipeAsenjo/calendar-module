@@ -36,7 +36,7 @@ export default function App() {
           }}
         >
           <Drawer.Screen name='Calendar' component={ Calendar } />
-          <Drawer.Screen name='To Do' component={ Todo } />
+          <Drawer.Screen name='Todo' component={ Todo } />
           <Drawer.Screen name='Notes' component={ Notes } />
         </Drawer.Navigator>
       </NavigationContainer>
