@@ -6,7 +6,6 @@ import { Entypo } from '@expo/vector-icons';
 export default (props) => {
   const [visible, setVisible] = useState(false);
   const { id, route } = props
-  console.log( route )
 
   const toggle = () => setVisible(!visible);
 

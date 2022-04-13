@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
@@ -24,10 +24,13 @@ const MyTheme = {
 }
 
 export default function App() {
+  const [data, setData] = useState( context.data )
+  const value = { data, setData }
+
   return (
-    <DataContext.Provider value={ context }>
+    <DataContext.Provider value={ value }>
       <NavigationContainer theme={ MyTheme }>
-        <Drawer.Navigator initialRouteName='Todo' 
+        <Drawer.Navigator initialRouteName='Notes' 
           screenOptions = {{
             headerStyle: {
               backgroundColor: '#931323'

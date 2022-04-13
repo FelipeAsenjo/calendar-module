@@ -23,7 +23,7 @@ const renderCalendar = ( data ) => {
 
 export default ({ route }) => {
   const { colors } = useTheme()
-  const { data } = useContext( DataContext )
+  const { data, setData } = useContext( DataContext )
 
   const formatedData = renderCalendar( data ) 
 
