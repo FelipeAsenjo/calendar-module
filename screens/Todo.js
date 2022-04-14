@@ -10,7 +10,7 @@ import AddButton from '../components/AddButton'
 
 export default ({ route }) => {
   const { colors } = useTheme()
-  const { data, setData } = useContext( DataContext )
+  const { data } = useContext( DataContext )
 
   const todos = data.filter( x => x.isTodo )
   
