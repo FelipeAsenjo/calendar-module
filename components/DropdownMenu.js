@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Entypo } from '@expo/vector-icons';
 
@@ -11,6 +11,7 @@ import {
   deleteItem
 } from '../utils/taskModifiers'
 import CustomAlert from './CustomAlert'
+import { NoteTodoOption, CalendarOption } from './DropdownItems'
 
 import { DataContext } from '../provider/context'
 
@@ -19,7 +20,6 @@ import { DataContext } from '../provider/context'
  * 2) creation from scratch form
  * 3) edit form
  * 4) add tag form
- * 5) create a new element for every dropdown element
  * 6) delete element
 */
 
@@ -30,30 +30,31 @@ export default (props) => {
 
   const toggle = () => setVisible(!visible);
 
-    // **DROPDOWN RENDERS**
   const menuOptions = () => {
-    const calendarOption = <MenuItem 
-        onPress={() => toCalendar(data, setData, id, null, null, toggle)}>
-          Create Schedule
-       </MenuItem>
-    const todoOption = <MenuItem 
-      onPress={() => toNoteOrTodo(data, setData, id, true, toggle)}>
-          Create To do
-      </MenuItem>
-    const noteOption = <MenuItem 
-          onPress={() => toNoteOrTodo(data, setData, id, false, toggle)}>
-            Create Note
-        </MenuItem>
-    
     switch( route ) {
       case 'Calendar':
-        return <>{ todoOption }{ noteOption }</>
+        return (
+          <>
+            <NoteTodoOption data={data} setData={setData} id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
+            <NoteTodoOption data={data} setData={setData} id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+          </>
+        )
         break
       case 'Todo':
-        return <>{ calendarOption }{ noteOption }</>
+        return (
+          <>
+            <CalendarOption data={data} setData={setData} id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <NoteTodoOption data={data} setData={setData} id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+          </>
+        )
         break
       case 'Notes':
-        return <>{ calendarOption }{ todoOption }</>
+        return (
+          <>
+            <CalendarOption data={data} setData={setData} id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <NoteTodoOption data={data} setData={setData} id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
+          </>
+        )
         break
     }
   }
