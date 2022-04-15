@@ -10,6 +10,8 @@ import AddButton from '../components/AddButton'
 
 const renderCalendar = ( data ) => {
     let agendaFormat = {}
+
+  //solve sorting issues
     const withDate = data.filter( x => x.date )
 
     withDate.forEach(x => {

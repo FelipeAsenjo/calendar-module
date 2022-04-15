@@ -12,7 +12,8 @@ export default ({ route }) => {
   const { colors } = useTheme()
   const { data } = useContext( DataContext )
 
-  const todos = data.filter( x => x.isTodo )
+  const todos = data.filter( x => x.isTodo ).sort((a, b) => b.priority - a.priority)
+
   
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>

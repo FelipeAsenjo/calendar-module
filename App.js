@@ -4,6 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
 
+/*
+ * 1) google calendar integration back & forward
+ * 2) creation forms
+ * 3) tag filters
+ * 4) settings screen
+ * 5) profile screen
+ * 6) local storage
+ * 7) remote backup (related with point 1??)
+ * 8) scrollable views ( all of them )
+*/
 import Calendar from './screens/Calendar'
 import Todo from './screens/Todo'
 import Notes from './screens/Notes'

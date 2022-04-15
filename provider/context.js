@@ -50,7 +50,7 @@ export const context = {
        date: '2022-04-15',
        time: null,
        tags: ['Work', 'Idea'],
-       priority: 800
+       priority: 700
       },
       {
        id: '5',
@@ -74,7 +74,7 @@ export const context = {
        date: '2022-04-13',
        time: null,
        tags: ['Home'],
-       priority: 800
+       priority: 200
       },
       {
        id: '7',
@@ -86,7 +86,7 @@ export const context = {
        date: '2022-04-15',
        time: null,
        tags: ['Work', 'Idea'],
-       priority: 800
+       priority: 300
       },
       {
        id: '8',
@@ -98,7 +98,7 @@ export const context = {
        date: '2022-04-15',
        time: null,
        tags: ['Work', 'Idea'],
-       priority: 800
+       priority: 400
       },
       {
        id: '9',
@@ -122,7 +122,7 @@ export const context = {
        date: '2022-04-13',
        time: null,
        tags: ['Home', 'Idea'],
-       priority: 800
+       priority: 100
       },
       {
        id: '11',
@@ -146,7 +146,7 @@ export const context = {
        date: null,
        time: null,
        tags: ['Home', 'Idea'],
-       priority: 800
+       priority: 300
       },
       {
        id: '13',
@@ -158,7 +158,7 @@ export const context = {
        date: null,
        time: null,
        tags: ['Home', 'Idea'],
-       priority: 800
+       priority: 200
       },
       {
        id: '14',
@@ -182,7 +182,7 @@ export const context = {
        date: null,
        time: null,
        tags: ['Home', 'Idea'],
-       priority: 800
+       priority: 500
       },
       {
        id: '16',
@@ -194,7 +194,7 @@ export const context = {
        date: null,
        time: null,
        tags: ['Home', 'Idea'],
-       priority: 800
+       priority: 1000
       }
    ]
 }

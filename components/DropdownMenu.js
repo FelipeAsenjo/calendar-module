@@ -1,9 +1,27 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Entypo } from '@expo/vector-icons';
 
+import { 
+  findInData,
+  dataWithoutFinded,
+  toCalendar,
+  toNoteOrTodo,
+  deleteItem
+} from '../utils/taskModifiers'
+import CustomAlert from './CustomAlert'
+
 import { DataContext } from '../provider/context'
+
+/*
+ * 1) calendar migration form
+ * 2) creation from scratch form
+ * 3) edit form
+ * 4) add tag form
+ * 5) create a new element for every dropdown element
+ * 6) delete element
+*/
 
 export default (props) => {
   const [visible, setVisible] = useState(false);
@@ -11,64 +29,31 @@ export default (props) => {
   const { id, route } = props
 
   const toggle = () => setVisible(!visible);
-  const findInData = () => data.find(x => x.id === id)
-  const dataWithoutFinded = () => data.filter(x => x.id != id)
-  
-  // **TASK MODIFIERS**
-  const toCalendar = (date, time) => {
-    const task = findInData()
 
-    toggle()
-  }
-  
-  const toNoteOrTodo = isTodo => {
-    const taskFinded = findInData()
-    const filteredData = dataWithoutFinded()
-    const modifiedTask = {
-      ...taskFinded,
-      isTodo: isTodo,
-      hasPeriod: false,
-      period: {},
-      date: null,
-      time: null
-    }
-
-    setData(() => [...filteredData, modifiedTask])
-
-    toggle()
-    alert(`${isTodo ? "To do" : "Note"} has been successfully created`)
-  }
-
-  // **DROPDOWN RENDERS**
-  const menuOptions = id => {
-    const calendarOption = <MenuItem onPress={toCalendar}>Create Schedule</MenuItem>
-    const todoOption = <MenuItem onPress={() => toNoteOrTodo(true)}>Create To do</MenuItem>
-    const noteOption = <MenuItem onPress={() => toNoteOrTodo(false)}>Create Note</MenuItem>
+    // **DROPDOWN RENDERS**
+  const menuOptions = () => {
+    const calendarOption = <MenuItem 
+        onPress={() => toCalendar(data, setData, id, null, null, toggle)}>
+          Create Schedule
+       </MenuItem>
+    const todoOption = <MenuItem 
+      onPress={() => toNoteOrTodo(data, setData, id, true, toggle)}>
+          Create To do
+      </MenuItem>
+    const noteOption = <MenuItem 
+          onPress={() => toNoteOrTodo(data, setData, id, false, toggle)}>
+            Create Note
+        </MenuItem>
     
     switch( route ) {
       case 'Calendar':
-        return (
-          <>
-            { todoOption }
-            { noteOption }
-          </>
-        )
+        return <>{ todoOption }{ noteOption }</>
         break
       case 'Todo':
-        return (
-          <>
-            { calendarOption }
-            { noteOption }
-          </>
-        )
+        return <>{ calendarOption }{ noteOption }</>
         break
       case 'Notes':
-        return (
-          <>
-            { calendarOption }
-            { todoOption }
-          </>
-        )
+        return <>{ calendarOption }{ todoOption }</>
         break
     }
   }
@@ -87,9 +72,11 @@ export default (props) => {
       >
         <MenuItem onPress={toggle}>Edit</MenuItem>
         <MenuItem onPress={toggle}>Add tag</MenuItem>
-        { menuOptions( id ) }
+        { menuOptions() }
         <MenuDivider />
-        <MenuItem onPress={toggle}>Delete</MenuItem>
+        <MenuItem onPress={() => deleteItem(data, setData, id, toggle)}>
+          Delete
+        </MenuItem>
       </Menu>
     </View>
   );
