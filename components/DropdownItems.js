@@ -26,3 +26,12 @@ export const NoteTodoOption = (props) => {
   )
 }
 
+export const DeleteOption = (props) => {
+  const { id, data, setData, toggle, text } = props
+  
+  return (
+    <MenuItem onPress={() => deleteItem(data, setData, id, toggle)}>
+      { text }
+    </MenuItem>
+  )
+}

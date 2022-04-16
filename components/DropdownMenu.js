@@ -3,15 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Entypo } from '@expo/vector-icons';
 
-import { 
-  findInData,
-  dataWithoutFinded,
-  toCalendar,
-  toNoteOrTodo,
-  deleteItem
-} from '../utils/taskModifiers'
-import CustomAlert from './CustomAlert'
-import { NoteTodoOption, CalendarOption } from './DropdownItems'
+import { NoteTodoOption, CalendarOption, DeleteOption } from './DropdownItems'
 
 import { DataContext } from '../provider/context'
 
@@ -20,7 +12,6 @@ import { DataContext } from '../provider/context'
  * 2) creation from scratch form
  * 3) edit form
  * 4) add tag form
- * 6) delete element
 */
 
 export default (props) => {
@@ -75,9 +66,14 @@ export default (props) => {
         <MenuItem onPress={toggle}>Add tag</MenuItem>
         { menuOptions() }
         <MenuDivider />
-        <MenuItem onPress={() => deleteItem(data, setData, id, toggle)}>
-          Delete
-        </MenuItem>
+        <DeleteOption
+          title={'This task will be deleted'} 
+          id={id}
+          data={data}
+          setData={setData}
+          toggle={toggle}
+          text={'Delete'}
+        />   
       </Menu>
     </View>
   );

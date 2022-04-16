@@ -1,23 +1,25 @@
+import React, { useContext } from 'react'
 import { Alert } from 'react-native';
 
-import { DataContext } from '../provider/context'
+export default async (title, msg) => {
 
-export default (title, msg, action) => {
-  const { data, setData } = useContext( DataContext )
+  return new Promise((resolve, reject) => {
+    Alert.alert(
+        title,
+        msg,
+        [
+          {
+            text: 'Cancel',
+            onPress: () => resolve(false),
+            style: 'cancel'
+          },
+          {
+            text: 'OK',
+            onPress: () => resolve(true)
+          }
+        ]
+      )
+    })
+} 
 
-  Alert.alert(
-    title,
-    msg,
-    [
-      {
-        text: 'Cancel',
-        //onPress: action,
-        style: 'cancel'
-      },
-      {
-        text: 'OK',
-        onPress: action,
-      }
-    ]
-  )
-}
+  

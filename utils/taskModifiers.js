@@ -1,3 +1,4 @@
+import CustomAlert from '../components/CustomAlert'
 
 export const findInData = (data, id) => data.find(x => x.id === id)
 export const dataWithoutFinded = (data, id) => data.filter(x => x.id != id)
@@ -20,15 +21,16 @@ export const toNoteOrTodo = (data, setData, id, isTodo, toggle) => {
       time: null
     }
 
-    setData(() => [...filteredData, modifiedTask])
+    setData([...filteredData, modifiedTask])
 
     toggle()
     alert(`${isTodo ? "To do" : "Note"} has been successfully created`)
   }
 
-export const deleteItem = (data, setData, id, toggle) => {
+export const deleteItem = async (data, setData, id, toggle) => {
+    const userAnswer = await CustomAlert('This task will be deleted', null)
     const filteredData = dataWithoutFinded( data, id )
 
-    setData(() => [...filteredData])
     toggle()
+    { userAnswer ? setData([...filteredData]) : setData([...data]) }
   }
