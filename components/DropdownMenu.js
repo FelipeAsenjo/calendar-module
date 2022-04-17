@@ -1,11 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Entypo } from '@expo/vector-icons';
 
-import { NoteTodoOption, CalendarOption, DeleteOption } from './DropdownItems'
-
-import { DataContext } from '../provider/context'
+import { NoteTodoOption, CalendarOption, DeleteOption } from '.'
 
 /*
  * 1) calendar migration form
@@ -16,7 +14,6 @@ import { DataContext } from '../provider/context'
 
 export default (props) => {
   const [visible, setVisible] = useState(false);
-  const { data, setData } = useContext( DataContext )
   const { id, route } = props
 
   const toggle = () => setVisible(!visible);
@@ -26,24 +23,24 @@ export default (props) => {
       case 'Calendar':
         return (
           <>
-            <NoteTodoOption data={data} setData={setData} id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
-            <NoteTodoOption data={data} setData={setData} id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
+            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
           </>
         )
         break
       case 'Todo':
         return (
           <>
-            <CalendarOption data={data} setData={setData} id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
-            <NoteTodoOption data={data} setData={setData} id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+            <CalendarOption id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
           </>
         )
         break
       case 'Notes':
         return (
           <>
-            <CalendarOption data={data} setData={setData} id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
-            <NoteTodoOption data={data} setData={setData} id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
+            <CalendarOption id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
           </>
         )
         break
@@ -69,8 +66,6 @@ export default (props) => {
         <DeleteOption
           title={'This task will be deleted'} 
           id={id}
-          data={data}
-          setData={setData}
           toggle={toggle}
           text={'Delete'}
         />   

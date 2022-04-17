@@ -4,9 +4,7 @@ import { useTheme } from '@react-navigation/native';
 
 import { DataContext } from '../provider/context'
 
-import CustomView from '../components/CustomView';
-import TaskCard from '../components/TaskCard'
-import AddButton from '../components/AddButton'
+import { CustomView, TaskCard, AddButton } from '../components'
 
 const renderCalendar = ( data ) => {
     let agendaFormat = {}
