@@ -1,12 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, FlatList } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 import { DataContext } from '../provider/context'
 
-import { CustomView, TaskCard, AddButton } from '../components'
+import CustomView from '../components/CustomView'
+import TaskCard from '../components/TaskCard'
+import AddButton from '../components/AddButton'
+import ModalCreateSchedule from '../components/ModalCreateSchedule'
 
 export default ({ route }) => {
+  const [modalVisibility, setModalVisibility] = useState(true)
   const { colors } = useTheme()
   const { data } = useContext( DataContext )
 
@@ -21,6 +25,10 @@ export default ({ route }) => {
         keyExtractor={item => item.id}
       />
       <AddButton />
+      <ModalCreateSchedule 
+        visible={true}
+        setVisibility={setModalVisibility}
+      />
     </CustomView>
   );
 }

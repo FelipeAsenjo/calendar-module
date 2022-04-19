@@ -3,7 +3,9 @@ import { View, StyleSheet } from 'react-native';
 import { Menu, MenuItem, MenuDivider } from 'react-native-material-menu';
 import { Entypo } from '@expo/vector-icons';
 
-import { NoteTodoOption, CalendarOption, DeleteOption } from '.'
+import NoteTodoOption from './DropdownNoteTodo'
+import CalendarOption from './DropdownCalendar'
+import DeleteOption from './DropdownDelete'
 
 /*
  * 1) calendar migration form

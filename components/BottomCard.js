@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
-import { Pill } from '.'
+import Pill from './Pill'
 
 // cambiar el tag de color dinamicamente
 

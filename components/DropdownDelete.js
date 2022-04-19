@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { MenuItem } from 'react-native-material-menu';
 import { findInData, dataWithoutFinded } from '../utils/taskModifiers'
-import { CustomAlert } from '.'
+import { CustomAlert } from './CustomAlert'
 
 import { DataContext } from '../provider/context'
 

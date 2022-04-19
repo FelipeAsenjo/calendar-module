@@ -10,7 +10,6 @@ export default (props) => {
 
   const handlePress = () => {
     const task = findInData( data, id )
-
     toggle()
   }
   

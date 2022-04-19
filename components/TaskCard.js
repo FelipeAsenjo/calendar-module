@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import { BottomCard, DropdownMenu } from '.'
+import BottomCard from './BottomCard'
+import DropdownMenu from './DropdownMenu'
 
 export default(props) => {
   let { route, item } = props

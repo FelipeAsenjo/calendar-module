@@ -12,7 +12,6 @@ import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
  * 5) profile screen
  * 6) local storage
  * 7) remote backup (related with point 1??)
- * 8) scrollable views ( all of them )
 */
 import Calendar from './screens/Calendar'
 import Todo from './screens/Todo'
