@@ -10,7 +10,7 @@ import AddButton from '../components/AddButton'
 import ModalCreateSchedule from '../components/ModalCreateSchedule'
 
 export default ({ route }) => {
-  const [modalVisibility, setModalVisibility] = useState(true)
+  const [modalVisibility, setModalVisibility] = useState(false)
   const { colors } = useTheme()
   const { data } = useContext( DataContext )
 
@@ -24,9 +24,11 @@ export default ({ route }) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <AddButton />
+      <AddButton 
+        setModalVisibility={setModalVisibility}
+      />
       <ModalCreateSchedule 
-        visible={true}
+        visible={modalVisibility}
         setVisibility={setModalVisibility}
       />
     </CustomView>

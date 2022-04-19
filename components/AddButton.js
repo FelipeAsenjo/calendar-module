@@ -3,13 +3,13 @@ import { useTheme } from '@react-navigation/native';
 
 import { Feather } from '@expo/vector-icons';
 
-export default () => {
+export default ({ setModalVisibility }) => {
   const { colors } = useTheme()
 
   return (
     <TouchableOpacity 
       style={ [styles.button, {backgroundColor: colors.secondary, color: colors.light}] }
-      onPress={() => alert('Adding stuff')}
+      onPress={() => setModalVisibility(true)}
     >
       <Feather name='plus' size={ 54 } color={ colors.light } />
     </TouchableOpacity>

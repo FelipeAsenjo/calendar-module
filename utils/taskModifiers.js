@@ -9,5 +9,7 @@ export const formatTime = date => {
     return `${formatNumber(date.getHours())}:${formatNumber(date.getMinutes())}`
 }
 
+export const capitalize = word => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+}
 
- 

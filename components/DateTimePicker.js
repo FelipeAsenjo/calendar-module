@@ -3,42 +3,25 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-import { formatDate, formatTime } from '../utils/taskModifiers'
+import { formatDate, formatTime, capitalize } from '../utils/taskModifiers'
 
-export default ({ mode, toForm, ...rest }) => {
+export default ({ mode, toForm }) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+  const [timeLoaded, setTimeLoaded] = useState(false)
   const { colors } = useTheme()
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate
+    const currentDate = selectedDate !== undefined ? selectedDate : date
+    setShow(false)
+    setDate(currentDate)
 
-    setShow(false);
-    setDate(currentDate);
-  };
-
-  useEffect(() => {
-    console.log(date)
-    let formatedData
-    switch(mode) {
-      case 'date':
-        formatedData = formatDate(date)
-        break
-      case 'time':
-        formatedData = formatTime(date)
-        break
-    }
-
+    const formatedData = mode === 'date' ? 
+      formatDate(currentDate) :
+      formatTime(currentDate)
     toForm(formatedData, mode)
-  }, [date])
-
-  const showMode = () => {
-    setShow(true);
+    { mode === 'time' && setTimeLoaded(true) }
   };
-
-  const capitalize = word => {
-    return word.charAt(0).toUpperCase() + word.slice(1)
-  }
 
   return (
     <>
@@ -46,12 +29,13 @@ export default ({ mode, toForm, ...rest }) => {
         <Text style={ styles.text }>{ capitalize(mode) }</Text>
         <TouchableOpacity
           style={[ styles.button, {backgroundColor: colors.primary} ]}
-          onPress={showMode}
+          onPress={() => setShow(true)}
         >
           <Text 
             style={[ styles.buttonText, { color: colors.light } ]}
           >
-            { mode === 'date' ? formatDate(date) : ' -- : -- : -- ' }
+            { mode === 'date' ? formatDate(date) : 
+                !timeLoaded ? ' -- : -- : -- ' : formatTime(date) }
           </Text>
         </TouchableOpacity>
       </View>

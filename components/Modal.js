@@ -9,7 +9,7 @@ export default ({ children, visible, setVisibility, title, data, setData }) => {
   const handleSubmit = () => {
     console.log(data)
 
-    //setVisibility(false)
+    setVisibility(false)
   }
   
   return (
