@@ -1,15 +1,13 @@
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
-import { FormButton } from './FormElements'
+import FormButton from './FormButton'
 
 export default ({ children, visible, setVisibility, title, data, setData }) => {
-  const handleCancel = () => {
-    setVisibility(false)
-  }
+  const handleCancel = () => setVisibility(false)
 
   const handleSubmit = () => {
     console.log(data)
 
-    setVisibility(false)
+    //setVisibility(false)
   }
   
   return (

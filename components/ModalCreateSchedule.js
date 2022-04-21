@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import Modal from './Modal'
-import { FormInput } from './FormElements'
+import Switch from './Switch'
+import FormInput from './FormInput'
 import DateTimePicker from './DateTimePicker'
+import FormButtonGroup from './FormButtonGroup'
 
 export default ({ visible, setVisibility }) => {
   const [formInfo, setFormInfo] = useState({})
+  const [isRoutine, setIsRoutine] = useState(false)
 
   const handleChange = (text, name) => {
     setFormInfo({
       ...formInfo,
       [name]: text,
     })
+
     console.log(formInfo)
   }
 
@@ -44,6 +48,19 @@ export default ({ visible, setVisibility }) => {
           toForm={handleChange}
         />
       </View>
+      <View style={ styles.buttonContainer }>
+        <Switch 
+          name='isBirthday'
+          toForm={handleChange}
+        />
+        <Switch 
+          name='isRoutine'
+          toForm={handleChange}
+        />
+      </View>
+      <FormButtonGroup 
+        isAvailable={isRoutine}
+      />
     </Modal>
   )
 }
