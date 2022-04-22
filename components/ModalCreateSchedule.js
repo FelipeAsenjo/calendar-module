@@ -11,7 +11,7 @@ import DateTimePicker from './DateTimePicker'
 // luego en el menu lateral, agregar seccion a parte 
 // para agregar y borrar tags y routines
 
-export default ({ visible, setVisibility }) => {
+export default ({ visible, setVisibility, route }) => {
   const [formInfo, setFormInfo] = useState({})
 
   const handleChange = (text, name) => {
@@ -28,8 +28,9 @@ export default ({ visible, setVisibility }) => {
       visible={visible} 
       setVisibility={setVisibility} 
       title='Create Task'
-      data={formInfo}
-      setData={setFormInfo}
+      formInfo={formInfo}
+      setFormInfo={setFormInfo}
+      route={route}
     >
       <FormInput 
         autoFocus={true} 

@@ -52,6 +52,7 @@ export default ({ route }) => {
       <ModalCreateSchedule 
         visible={modalVisibility}
         setVisibility={setModalVisibility}
+        route={route.name}
       />
 
     </CustomView> 

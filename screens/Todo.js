@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, FlatList } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
@@ -8,8 +8,10 @@ import CustomView from '../components/CustomView'
 import TaskCard from '../components/TaskCard'
 import AddButton from '../components/AddButton'
 import Modal from '../components/Modal'
+import ModalNewNoteTodo from '../components/ModalNewNoteTodo'
 
 export default ({ route }) => {
+  const [addNewVisibility, setAddNewVisibility] = useState(false)
   const { colors } = useTheme()
   const { data } = useContext( DataContext )
 
@@ -23,7 +25,14 @@ export default ({ route }) => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-      <AddButton />
+      <AddButton 
+        setModalVisibility={setAddNewVisibility}
+      />
+      <ModalNewNoteTodo
+        visible={addNewVisibility}
+        setVisibility={setAddNewVisibility}
+        route={route.name}
+      />
     </CustomView>
   );
 }
