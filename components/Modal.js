@@ -1,13 +1,23 @@
+import { useContext } from 'react'
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
 import FormButton from './FormButton'
+import { createNewTask } from '../utils/taskModifiers'
 
-export default ({ children, visible, setVisibility, title, data, setData }) => {
+import { DataContext } from '../provider/context'
+import { mergeObjects } from '../utils/taskModifiers'
+
+export default ({ children, visible, setVisibility, title, formInfo, setFormInfo }) => {
+  const { data, setData } = useContext( DataContext )
+
   const handleCancel = () => setVisibility(false)
 
   const handleSubmit = () => {
-    console.log(data)
+    //console.log(formInfo)
+    const newTaskTemplate = createNewTask()
+    const mergedTask = mergeObjects(newTaskTemplate, formInfo)
+    console.log(mergedTask)
 
-    //setVisibility(false)
+    setVisibility(false)
   }
   
   return (

@@ -13,3 +13,32 @@ export const capitalize = word => {
     return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
+export const createNewTask = () => {
+    return {
+        id: null,
+        title: '',
+        description: '',
+        isTodo: false,
+        hasPeriod: false,
+        period: {
+            days: null,
+            tag: ''
+        },
+        date: null,
+        time: null,
+        tags: [],
+        priority: null
+    }
+}
+
+export const mergeObjects = (bigObject, smallObject) => {
+    const mergedObject = {
+        ...bigObject,
+    }
+
+    Object.keys(smallObject).forEach(x => {
+        mergedObject[x] = smallObject[x]
+    })
+
+    return mergedObject
+}
