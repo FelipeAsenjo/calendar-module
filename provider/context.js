@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 
 export const DataContext = createContext()
+export const SelectedValueContext = createContext()
 
 export const context = { 
       data: [

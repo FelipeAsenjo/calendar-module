@@ -5,7 +5,7 @@ import BottomCard from './BottomCard'
 import DropdownMenu from './DropdownMenu'
 
 export default(props) => {
-  let { route, item } = props
+		let { route, item, taskReceiver, setVisibility } = props
 
   return (
     <TouchableOpacity
@@ -17,7 +17,12 @@ export default(props) => {
       <Text style={ styles.title }>
         { item.title }
       </Text>
-      <DropdownMenu id={ item.id } route={ route } />
+      <DropdownMenu 
+				id={ item.id } 
+				route={ route } 
+				taskReceiver={taskReceiver}
+				setModalVisibility={ setVisibility } 
+			/>
       <Text style={ styles.body }>
         { item.description }
       </Text>

@@ -12,12 +12,19 @@ import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
  * 5) profile screen
  * 6) local storage
  * 7) remote backup (related with point 1??)
+ * 8) calendar migration form ***
+ * 9) edit form
+ * 10) add tag form
+ * comment in BottomCard
+ * comment in ModalCreateSchedule
+ * bug in Switch, can't be birthday and routine ( solved by action button? )
+ * bug in creation schedule, if date doesn't change date take weird value
 */
 import Calendar from './screens/Calendar'
 import Todo from './screens/Todo'
 import Notes from './screens/Notes'
 
-import { DataContext, context } from './provider/context'
+import { DataContext, SelectedValueContext, context } from './provider/context'
 
 const Drawer = createDrawerNavigator()
 
@@ -33,26 +40,30 @@ const MyTheme = {
 }
 
 export default function App() {
-  const [data, setData] = useState( context.data )
-  const value = { data, setData }
+		const [data, setData] = useState( context.data )
+		const [selectedItem, setSelectedItem] = useState( null )
+		const valueData = { data, setData }
+		const valueItem = { selectedItem, setSelectedItem }
 
-  return (
-    <DataContext.Provider value={ value }>
-      <NavigationContainer theme={ MyTheme }>
-        <Drawer.Navigator initialRouteName='Notes' 
-          screenOptions = {{
-            headerStyle: {
-              backgroundColor: '#931323'
-            },
-            headerTintColor: '#fff'
-          }}
-        >
-          <Drawer.Screen name='Calendar' component={ Calendar } />
-          <Drawer.Screen name='Todo' component={ Todo } />
-          <Drawer.Screen name='Notes' component={ Notes } />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </DataContext.Provider>
-  );
+		return (
+		<DataContext.Provider value={ valueData }>
+				<SelectedValueContext.Provider value={ valueItem }>
+					<NavigationContainer theme={ MyTheme }>
+						<Drawer.Navigator initialRouteName='Notes' 
+							screenOptions = {{
+								headerStyle: {
+									backgroundColor: '#931323'
+								},
+								headerTintColor: '#fff'
+							}}
+						>
+							<Drawer.Screen name='Calendar' component={ Calendar } />
+							<Drawer.Screen name='Todo' component={ Todo } />
+							<Drawer.Screen name='Notes' component={ Notes } />
+						</Drawer.Navigator>
+					</NavigationContainer>
+				</SelectedValueContext.Provider>
+		</DataContext.Provider>
+		);
 }
 

@@ -7,18 +7,10 @@ import NoteTodoOption from './DropdownNoteTodo'
 import CalendarOption from './DropdownCalendar'
 import DeleteOption from './DropdownDelete'
 
-/*
- * 1) calendar migration form
- * 2) creation from scratch form
- * 3) edit form
- * 4) add tag form
-*/
-
-export default (props) => {
+export default ({ id, route, taskReceiver, setModalVisibility }) => {
   const [visible, setVisible] = useState(false);
-  const { id, route } = props
 
-  const toggle = () => setVisible(!visible);
+  const toggle = () => setVisible(!visible)
 
   const menuOptions = () => {
     switch( route ) {
@@ -33,7 +25,7 @@ export default (props) => {
       case 'Todo':
         return (
           <>
-            <CalendarOption id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <CalendarOption id={id} taskReceiver={taskReceiver} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} />
             <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
           </>
         )
@@ -41,7 +33,7 @@ export default (props) => {
       case 'Notes':
         return (
           <>
-            <CalendarOption id={id} date={null} time={null} toggle={toggle} text={'Create Schedule'} />
+            <CalendarOption id={id} taskReceiver={taskReceiver} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} />
             <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
           </>
         )

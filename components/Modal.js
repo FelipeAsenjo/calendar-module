@@ -2,10 +2,9 @@ import { useContext } from 'react'
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
 import uuid from 'react-native-uuid'
 import FormButton from './FormButton'
-import { createNewTask } from '../utils/taskModifiers'
 
 import { DataContext } from '../provider/context'
-import { mergeObjects } from '../utils/taskModifiers'
+import { mergeObjects, createNewTask } from '../utils/taskModifiers'
 
 export default (props) => {
   const { data, setData } = useContext( DataContext )
@@ -14,12 +13,15 @@ export default (props) => {
   const handleCancel = () => setVisibility(false)
 
   const handleSubmit = () => {
+		//console.log(formInfo) // hasta aqui bien
     const newTaskTemplate = createNewTask()
     const mergedTask = mergeObjects(newTaskTemplate, formInfo)
-    mergedTask.id = uuid.v4()
+		console.log( mergedTask )
+    mergedTask.id = mergedTask.id ?? uuid.v4()
 
-    console.log(mergedTask)
-    setData([...data, mergedTask])
+		console.log(mergedTask)
+		setData([...data, mergedTask])
+			//{ route === 'Calendar' ? setData([...data, formInfo]) : setData([...data, mergedTask]) }
 
     setVisibility(false)
   }
