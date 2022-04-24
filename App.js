@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
+import { Provider } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
@@ -20,11 +21,12 @@ import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
  * bug in Switch, can't be birthday and routine ( solved by action button? )
  * bug in creation schedule, if date doesn't change date take weird value
 */
-import Calendar from './screens/Calendar'
-import Todo from './screens/Todo'
-import Notes from './screens/Notes'
+import Calendar from './src/screens/Calendar'
+import Todo from './src/screens/Todo'
+import Notes from './src/screens/Notes'
 
-import { DataContext, SelectedValueContext, context } from './provider/context'
+import { DataContext, SelectedValueContext, context } from './src/provider/context'
+import store from './src/store'
 
 const Drawer = createDrawerNavigator()
 
@@ -46,24 +48,26 @@ export default function App() {
 		const valueItem = { selectedItem, setSelectedItem }
 
 		return (
-		<DataContext.Provider value={ valueData }>
-				<SelectedValueContext.Provider value={ valueItem }>
-					<NavigationContainer theme={ MyTheme }>
-						<Drawer.Navigator initialRouteName='Notes' 
-							screenOptions = {{
-								headerStyle: {
-									backgroundColor: '#931323'
-								},
-								headerTintColor: '#fff'
-							}}
-						>
-							<Drawer.Screen name='Calendar' component={ Calendar } />
-							<Drawer.Screen name='Todo' component={ Todo } />
-							<Drawer.Screen name='Notes' component={ Notes } />
-						</Drawer.Navigator>
-					</NavigationContainer>
-				</SelectedValueContext.Provider>
-		</DataContext.Provider>
+				<Provider store={store}>
+						<DataContext.Provider value={ valueData }>
+								<SelectedValueContext.Provider value={ valueItem }>
+									<NavigationContainer theme={ MyTheme }>
+										<Drawer.Navigator initialRouteName='Notes' 
+											screenOptions = {{
+												headerStyle: {
+													backgroundColor: '#931323'
+												},
+												headerTintColor: '#fff'
+											}}
+										>
+											<Drawer.Screen name='Calendar' component={ Calendar } />
+											<Drawer.Screen name='Todo' component={ Todo } />
+											<Drawer.Screen name='Notes' component={ Notes } />
+										</Drawer.Navigator>
+									</NavigationContainer>
+								</SelectedValueContext.Provider>
+						</DataContext.Provider>
+				</Provider>
 		);
 }
 

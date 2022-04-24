@@ -4,24 +4,30 @@ import uuid from 'react-native-uuid'
 import FormButton from './FormButton'
 
 import { DataContext } from '../provider/context'
-import { mergeObjects, createNewTask } from '../utils/taskModifiers'
+import { mergeObjects, createNewTask, dataWithoutFinded } from '../utils/taskModifiers'
+
+// MIGRAR A REDUX
 
 export default (props) => {
   const { data, setData } = useContext( DataContext )
-  const { children, route, visible, setVisibility, title, formInfo, setFormInfo } = props
+  const { children, visible, setVisibility, title, formInfo, setFormInfo } = props
 
   const handleCancel = () => setVisibility(false)
 
   const handleSubmit = () => {
-		//console.log(formInfo) // hasta aqui bien
     const newTaskTemplate = createNewTask()
     const mergedTask = mergeObjects(newTaskTemplate, formInfo)
-		console.log( mergedTask )
-    mergedTask.id = mergedTask.id ?? uuid.v4()
+
+		if(mergedTask.id !== null) {
+				const filteredData = dataWithoutFinded( data, mergedTask.id )
+				setData([...filteredData, mergedTask])
+		} else {
+				mergedTask.id = uuid.v4()
+				setData([...data, mergedTask])
+
+		}
 
 		console.log(mergedTask)
-		setData([...data, mergedTask])
-			//{ route === 'Calendar' ? setData([...data, formInfo]) : setData([...data, mergedTask]) }
 
     setVisibility(false)
   }

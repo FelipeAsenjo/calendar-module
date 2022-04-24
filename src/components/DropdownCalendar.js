@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { MenuItem } from 'react-native-material-menu';
 import { findInData } from '../utils/taskModifiers'
 
@@ -11,14 +11,11 @@ import { SelectedValueContext } from '../provider/context'
 export default (props) => {
   const { data, setData } = useContext( DataContext )
   const { selectedItem, setSelectedItem } = useContext( SelectedValueContext )
-  const { id, taskReceiver, setVisibility, toggle, text } = props
+  const { id, setVisibility, toggle, text } = props
 
   const handlePress = () => {
-    const task = findInData( data, id )
-    setSelectedItem( task )
+    setSelectedItem( id )
     setVisibility(true)
-    console.log( selectedItem )
-    //taskReceiver( task )
 
     toggle()
   }

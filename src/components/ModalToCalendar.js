@@ -6,7 +6,7 @@ import DateTimePicker from './DateTimePicker'
 import { DataContext, SelectedValueContext } from '../provider/context'
 import { findInData, dataWithoutFinded } from '../utils/taskModifiers'
 
-export default ({ visible, setVisibility, task }) => {
+export default ({ visible, setVisibility }) => {
     const { data, setData } = useContext( DataContext )
     const { selectedItem, setSelectedItem } = useContext( SelectedValueContext )
     const [formInfo, setFormInfo] = useState({})
@@ -16,15 +16,13 @@ export default ({ visible, setVisibility, task }) => {
     }, [])
 
     const handleChange = (text, name) => {
-        const { id } = selectedItem
-        const filteredData = dataWithoutFinded( data, id )
         setFormInfo({
             ...formInfo,
             [name]: text,
             isTodo: false
         })
 
-        //console.log(formInfo)
+        console.log(formInfo)
     }
 
     return (
