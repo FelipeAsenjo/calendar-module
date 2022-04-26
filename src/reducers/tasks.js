@@ -279,31 +279,33 @@ export const complete = id => ({
 })
 
 export default (state = context.data, action) => {
-  const { payload } = action
+      const { payload } = action
 
-  switch(action.type) {
-    case ADD_TASK:
-      return { ...state, ...payload } 
-      break
-    case DELETE_ITEM:
-      return state.filter(x => x.id != payload) 
-      break
-    case EDIT_TASK:
-      return state.map(x => x.id === payload.id ? ({ ...payload.modifiedItem }) : x)
-      break
-    case TO_NOTE:
-      return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
-      break
-    case TO_TODO:
-      return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
-      break
-    case TO_CALENDAR:
-      return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
-      break
-    case COMPLETE:
-      return state.map(x => x.id === payload ? ({ ...x, completed: true }) : x)
-      break
-    default:
-          return state
-  }
+      console.log(payload)
+      switch(action.type) {
+            case ADD_TASK:
+                  console.log(payload)
+                  return state.concat(payload)
+                  break
+            case DELETE_ITEM:
+                  return state.filter(x => x.id != payload) 
+                  break
+            case EDIT_TASK:
+                  return state.map(x => x.id === payload.id ? ({ ...payload.modifiedItem }) : x)
+                  break
+            case TO_NOTE:
+                  return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
+                  break
+            case TO_TODO:
+                  return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
+                  break
+            case TO_CALENDAR:
+                  return state.map(x => x.id === payload.id ? ({ ...x, ...payload }) : x)
+                  break
+            case COMPLETE:
+                  return state.map(x => x.id === payload ? ({ ...x, completed: true }) : x)
+                  break
+            default:
+                return state
+      }
 }

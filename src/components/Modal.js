@@ -29,10 +29,10 @@ const CustomModal = (props) => {
     }
     if(from === 'createTask') {
       const newItem = { ...templateItem, ...formInfo }
-      addTask(newItem)
+      add(newItem)
     }
     if(from === 'editTask') {
-      editTask(id, modifiedItem)
+      edit(id, modifiedItem)
     }
 
     setVisibility(false)
