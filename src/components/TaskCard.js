@@ -1,12 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import BottomCard from './BottomCard'
 import DropdownMenu from './DropdownMenu'
 
-export default(props) => {
-		let { route, item, taskReceiver, setVisibility } = props
-
+export default ({ route, item, setVisibility, setSelectedItem }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
@@ -20,8 +18,8 @@ export default(props) => {
       <DropdownMenu 
 				id={ item.id } 
 				route={ route } 
-				taskReceiver={taskReceiver}
 				setModalVisibility={ setVisibility } 
+        setSelectedItem={setSelectedItem}
 			/>
       <Text style={ styles.body }>
         { item.description }

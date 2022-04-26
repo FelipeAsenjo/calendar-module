@@ -28,6 +28,7 @@ export default ({ visible, setVisibility, route }) => {
       visible={visible} 
       setVisibility={setVisibility} 
       title='Create Task'
+      from='createTask'
       formInfo={formInfo}
       setFormInfo={setFormInfo}
       route={route}

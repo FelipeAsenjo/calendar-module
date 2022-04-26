@@ -7,7 +7,7 @@ import NoteTodoOption from './DropdownNoteTodo'
 import CalendarOption from './DropdownCalendar'
 import DeleteOption from './DropdownDelete'
 
-export default ({ id, route, taskReceiver, setModalVisibility }) => {
+export default ({ id, route, setModalVisibility, setSelectedItem }) => {
   const [visible, setVisible] = useState(false);
 
   const toggle = () => setVisible(!visible)
@@ -17,24 +17,24 @@ export default ({ id, route, taskReceiver, setModalVisibility }) => {
       case 'Calendar':
         return (
           <>
-            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
-            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} setSelectedItem={setSelectedItem}/>
+            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} setSelectedItem={setSelectedItem}/>
           </>
         )
         break
       case 'Todo':
         return (
           <>
-            <CalendarOption id={id} taskReceiver={taskReceiver} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} />
-            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} />
+            <CalendarOption id={id} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} setSelectedItem={setSelectedItem}/>
+            <NoteTodoOption id={id} isTodo={false} toggle={toggle} text={'Create Note'} setSelectedItem={setSelectedItem}/>
           </>
         )
         break
       case 'Notes':
         return (
           <>
-            <CalendarOption id={id} taskReceiver={taskReceiver} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} />
-            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} />
+            <CalendarOption id={id} setVisibility={setModalVisibility} toggle={toggle} text={'Create Schedule'} setSelectedItem={setSelectedItem}/>
+            <NoteTodoOption id={id} isTodo={true} toggle={toggle} text={'Create To do'} setSelectedItem={setSelectedItem}/>
           </>
         )
         break

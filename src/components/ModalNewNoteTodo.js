@@ -24,6 +24,7 @@ export default ({ visible, setVisibility, route }) => {
       visible={visible} 
       setVisibility={setVisibility} 
       title={`Create ${route.slice(0, -1)}`}
+      from='createTask'
       formInfo={formInfo}
       setFormInfo={setFormInfo}
     >

@@ -1,25 +1,15 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { StyleSheet, View } from 'react-native'
 import Modal from './Modal'
 import DateTimePicker from './DateTimePicker'
 
-import { DataContext, SelectedValueContext } from '../provider/context'
-import { findInData, dataWithoutFinded } from '../utils/taskModifiers'
-
-export default ({ visible, setVisibility }) => {
-    const { data, setData } = useContext( DataContext )
-    const { selectedItem, setSelectedItem } = useContext( SelectedValueContext )
+export default ({ visible, setVisibility, selectedItem }) => {
     const [formInfo, setFormInfo] = useState({})
-
-    useEffect(() => {
-        setFormInfo(selectedItem)
-    }, [])
 
     const handleChange = (text, name) => {
         setFormInfo({
             ...formInfo,
             [name]: text,
-            isTodo: false
         })
 
         console.log(formInfo)
@@ -30,8 +20,9 @@ export default ({ visible, setVisibility }) => {
       visible={visible} 
       setVisibility={setVisibility} 
       title='Create Task'
+      from='toCalendar'
       formInfo={formInfo}
-      setFormInfo={setFormInfo}
+      id={selectedItem}
     >
       <View style={ styles.buttonContainer }>
         <DateTimePicker 

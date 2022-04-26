@@ -1,20 +1,16 @@
-import { useContext } from 'react'
+import { connect } from 'react-redux'
 import { MenuItem } from 'react-native-material-menu';
-import { findInData, dataWithoutFinded } from '../utils/taskModifiers'
 import { CustomAlert } from './CustomAlert'
 
-import { DataContext } from '../provider/context'
+import { deleteItem } from '../reducers/tasks'
 
-export default (props) => {
-  const { data, setData } = useContext( DataContext )
-  const { id, toggle, text } = props
+const DropdownDelete = ({ id, toggle, text, deleteItem }) => {
   
   const handlePress = async () => {
-    const userAnswer = await CustomAlert('This task will be deleted', null)
-    const filteredData = dataWithoutFinded( data, id )
-
+    //const userAnswer = await CustomAlert('This task will be deleted', null)
+    
+    deleteItem(id)
     toggle()
-    { userAnswer ? setData([...filteredData]) : setData([...data]) }
   }
 
   return (
@@ -23,3 +19,9 @@ export default (props) => {
     </MenuItem>
   )
 }
+
+const mapDispatchToProps = dispatch => ({
+  deleteItem: (id) => dispatch(deleteItem(id))
+})
+
+export default connect(null, mapDispatchToProps)(DropdownDelete)

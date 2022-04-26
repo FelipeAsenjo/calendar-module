@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createDrawerNavigator, useTheme } from '@react-navigation/drawer';
 
@@ -25,7 +24,6 @@ import Calendar from './src/screens/Calendar'
 import Todo from './src/screens/Todo'
 import Notes from './src/screens/Notes'
 
-import { DataContext, SelectedValueContext, context } from './src/provider/context'
 import store from './src/store'
 
 const Drawer = createDrawerNavigator()
@@ -42,31 +40,22 @@ const MyTheme = {
 }
 
 export default function App() {
-		const [data, setData] = useState( context.data )
-		const [selectedItem, setSelectedItem] = useState( null )
-		const valueData = { data, setData }
-		const valueItem = { selectedItem, setSelectedItem }
-
 		return (
 				<Provider store={store}>
-						<DataContext.Provider value={ valueData }>
-								<SelectedValueContext.Provider value={ valueItem }>
-									<NavigationContainer theme={ MyTheme }>
-										<Drawer.Navigator initialRouteName='Notes' 
-											screenOptions = {{
-												headerStyle: {
-													backgroundColor: '#931323'
-												},
-												headerTintColor: '#fff'
-											}}
-										>
-											<Drawer.Screen name='Calendar' component={ Calendar } />
-											<Drawer.Screen name='Todo' component={ Todo } />
-											<Drawer.Screen name='Notes' component={ Notes } />
-										</Drawer.Navigator>
-									</NavigationContainer>
-								</SelectedValueContext.Provider>
-						</DataContext.Provider>
+						<NavigationContainer theme={ MyTheme }>
+							<Drawer.Navigator initialRouteName='Notes' 
+								screenOptions = {{
+									headerStyle: {
+										backgroundColor: '#931323'
+									},
+									headerTintColor: '#fff'
+								}}
+							>
+								<Drawer.Screen name='Calendar' component={ Calendar } />
+								<Drawer.Screen name='Todo' component={ Todo } />
+								<Drawer.Screen name='Notes' component={ Notes } />
+							</Drawer.Navigator>
+						</NavigationContainer>
 				</Provider>
 		);
 }

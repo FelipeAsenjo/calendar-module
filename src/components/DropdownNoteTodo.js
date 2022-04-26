@@ -1,25 +1,13 @@
 import { useContext } from 'react'
+import { connect } from 'react-redux'
 import { MenuItem } from 'react-native-material-menu';
-import { findInData, dataWithoutFinded } from '../utils/taskModifiers'
 
-import { DataContext } from '../provider/context'
+import { toNote, toTodo } from '../reducers/tasks'
 
-export default (props) => {
-  const { data, setData } = useContext( DataContext )
-  const { id, isTodo, toggle, text } = props
+const DropdownNoteTodo = ({ id, isTodo, toggle, text, toTodo, toNote }) => {
 
   const handlePress = () => {
-    const taskFinded = findInData( data, id )
-    const filteredData = dataWithoutFinded( data, id )
-    const modifiedTask = {
-      ...taskFinded,
-      isTodo: isTodo,
-      hasPeriod: false,
-      period: {},
-      date: null,
-      time: null
-    }
-    setData([...filteredData, modifiedTask])
+    { isTodo ? toTodo(id) : toNote(id) }
 
     toggle()
     alert(`${isTodo ? "To do" : "Note"} has been successfully created`)
@@ -29,3 +17,10 @@ export default (props) => {
       <MenuItem onPress={handlePress}>{ text }</MenuItem>
   )
 }
+
+const mapDispatchToProps = dispatch => ({
+  toTodo: (id) => dispatch(toTodo(id)),
+  toNote: (id) => dispatch(toNote(id)),
+})
+
+export default connect(null, mapDispatchToProps)(DropdownNoteTodo)

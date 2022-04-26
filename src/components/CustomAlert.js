@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Alert } from 'react-native';
 
-export default async (title, msg) => {
+export default (title, msg) => {
 
   return new Promise((resolve, reject) => {
     Alert.alert(

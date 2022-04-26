@@ -1,33 +1,39 @@
-import { useContext } from 'react'
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
-import uuid from 'react-native-uuid'
+import { connect } from 'react-redux'
 import FormButton from './FormButton'
 
-import { DataContext } from '../provider/context'
-import { mergeObjects, createNewTask, dataWithoutFinded } from '../utils/taskModifiers'
+import { toCalendar, addTask, editTask } from '../reducers/tasks'
+import { createNewTask } from '../utils/taskModifiers'
 
-// MIGRAR A REDUX
-
-export default (props) => {
-  const { data, setData } = useContext( DataContext )
-  const { children, visible, setVisibility, title, formInfo, setFormInfo } = props
+const CustomModal = (props) => {
+  const { 
+    children,
+    visible,
+    setVisibility,
+    title,
+    from,
+    formInfo,
+    id,
+    toCalendar,
+    add,
+    edit
+  } = props
 
   const handleCancel = () => setVisibility(false)
 
   const handleSubmit = () => {
-    const newTaskTemplate = createNewTask()
-    const mergedTask = mergeObjects(newTaskTemplate, formInfo)
+    const templateItem = createNewTask()
 
-		if(mergedTask.id !== null) {
-				const filteredData = dataWithoutFinded( data, mergedTask.id )
-				setData([...filteredData, mergedTask])
-		} else {
-				mergedTask.id = uuid.v4()
-				setData([...data, mergedTask])
-
-		}
-
-		console.log(mergedTask)
+    if(from === 'toCalendar') {
+      toCalendar(id, formInfo.date, formInfo.time)
+    }
+    if(from === 'createTask') {
+      const newItem = { ...templateItem, ...formInfo }
+      addTask(newItem)
+    }
+    if(from === 'editTask') {
+      editTask(id, modifiedItem)
+    }
 
     setVisibility(false)
   }
@@ -85,3 +91,11 @@ const styles = StyleSheet.create({
     width: '100%'
   }
 })
+
+const mapDispatchToProps = dispatch => ({
+  toCalendar: (id, date, time) => dispatch(toCalendar(id, date, time)),
+  edit: (id, modifiedItem) => dispatch(editTask(id, modifiedItem)),
+  add: (newItem) => dispatch(addTask(newItem))
+})
+
+export default connect(null, mapDispatchToProps)(CustomModal)

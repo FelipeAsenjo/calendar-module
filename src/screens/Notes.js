@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, FlatList } from 'react-native';
+import { connect } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
-
-import { DataContext } from '../provider/context'
 
 import CustomView from '../components/CustomView'
 import TaskCard from '../components/TaskCard'
@@ -10,23 +9,21 @@ import AddButton from '../components/AddButton'
 import ModalToCalendar from '../components/ModalToCalendar'
 import ModalNewNoteTodo from '../components/ModalNewNoteTodo'
 
-export default ({ route }) => {
+const Notes = ({ route, data }) => {
 		const [addNewVisibility, setAddNewVisibility] = useState(false)
 		const [toCalendarVisibility, setToCalendarVisibility] = useState(false)
+    const [selectedItem, setSelectedItem] = useState()
 		const { colors } = useTheme()
-		const { data } = useContext( DataContext )
-
-		const taskReceiver = selectedTask => selectedTask
 
 		const notes = data.filter( x => !x.date && !x.isTodo )
-		.sort((a, b) => b.priority - a.priority)
+      .sort((a, b) => b.priority - a.priority)
 
 		const renderItem = ({ item }) => {
 		return <TaskCard 
 						item={ item } 
 						route={ route.name } 
-						taskReceiver={taskReceiver}
 						setVisibility={ setToCalendarVisibility } 
+            setSelectedItem={ setSelectedItem }
 						key={ item.id } 
 				/>
 		}
@@ -44,7 +41,7 @@ export default ({ route }) => {
       <ModalToCalendar
         visible={toCalendarVisibility}
         setVisibility={setToCalendarVisibility}
-				task={taskReceiver}
+        selectedItem={selectedItem}
       />
       <ModalNewNoteTodo
         visible={addNewVisibility}
@@ -63,3 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const mapStateToProps = state => {
+  return { data: state.tasks }
+}
+
+export default connect(mapStateToProps)(Notes)
