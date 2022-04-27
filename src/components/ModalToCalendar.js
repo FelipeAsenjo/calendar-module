@@ -11,8 +11,6 @@ export default ({ visible, setVisibility, selectedItem }) => {
             ...formInfo,
             [name]: text,
         })
-
-        console.log(formInfo)
     }
 
     return (

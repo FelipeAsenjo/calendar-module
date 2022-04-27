@@ -4,9 +4,8 @@ import { connect } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
-import TaskCard from '../components/TaskCard'
+import TaskItem from '../components/TaskItem'
 import AddButton from '../components/AddButton'
-import Modal from '../components/Modal'
 import ModalNewNoteTodo from '../components/ModalNewNoteTodo'
 import ModalToCalendar from '../components/ModalToCalendar'
 
@@ -18,7 +17,7 @@ const Todo = ({ route, data }) => {
 
   const todos = data.filter( x => x.isTodo ).sort((a, b) => b.priority - a.priority)
   const renderItem = ({ item }) => {
-    return <TaskCard 
+    return <TaskItem 
             item={ item }
             route={ route.name }
             setVisibility={ setToCalendarVisibility }

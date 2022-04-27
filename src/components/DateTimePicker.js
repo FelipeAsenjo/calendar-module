@@ -12,15 +12,20 @@ export default ({ mode, toForm }) => {
   const { colors } = useTheme()
 
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate !== undefined ? selectedDate : date
+    const currentDate = selectedDate !== undefined ?
+      selectedDate : date
+
+    setTimeLoaded(true)
     setShow(false)
     setDate(currentDate)
 
     const formatedData = mode === 'date' ? 
       formatDate(currentDate) :
-      formatTime(currentDate)
+      timeLoaded ?
+      formatTime(currentDate) :
+      null
     toForm(formatedData, mode)
-    { mode === 'time' && setTimeLoaded(true) }
+
   };
 
   return (
@@ -34,7 +39,10 @@ export default ({ mode, toForm }) => {
           <Text 
             style={[ styles.buttonText, { color: colors.light } ]}
           >
-            { mode === 'date' ? formatDate(date) : 
+            { mode === 'date' && !timeLoaded ?
+                'yyyy - mm - dd' :
+                mode === 'date' && timeLoaded ?
+                formatDate(date) : 
                 !timeLoaded ? ' -- : -- : -- ' : formatTime(date) }
           </Text>
         </TouchableOpacity>

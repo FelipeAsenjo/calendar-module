@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
-import TaskCard from '../components/TaskCard'
+import TaskItem from '../components/TaskItem'
 import AddButton from '../components/AddButton'
 import ModalToCalendar from '../components/ModalToCalendar'
 import ModalNewNoteTodo from '../components/ModalNewNoteTodo'
@@ -18,15 +18,15 @@ const Notes = ({ route, data }) => {
 		const notes = data.filter( x => !x.date && !x.isTodo )
       .sort((a, b) => b.priority - a.priority)
 
-		const renderItem = ({ item }) => {
-		return <TaskCard 
+		const renderItem = ({ item }) => (
+		    <TaskItem 
 						item={ item } 
 						route={ route.name } 
 						setVisibility={ setToCalendarVisibility } 
             setSelectedItem={ setSelectedItem }
 						key={ item.id } 
 				/>
-		}
+		)
 
   return (
     <CustomView style={ [styles.container, {backgroundColor: colors.primary}] }>

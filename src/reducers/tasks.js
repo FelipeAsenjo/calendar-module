@@ -209,7 +209,33 @@ const context = {
        time: null,
        tags: ['Home', 'Idea'],
        priority: 1000
-      }
+      },
+      {
+       id: '17',
+       title: 'any js object',
+       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+       isTodo: false,
+       completed: false,
+       hasPeriod: true,
+       period: {},
+       date: '2022-04-28',
+       time: null,
+       tags: ['Home', 'Idea'],
+       priority: 200
+      },
+      {
+       id: '18',
+       title: 'any js object',
+       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+       isTodo: false,
+       completed: false,
+       hasPeriod: true,
+       period: {},
+       date: '2022-04-27',
+       time: null,
+       tags: ['Home', 'Work'],
+       priority: 700
+      },
    ]
 }
 
@@ -281,10 +307,8 @@ export const complete = id => ({
 export default (state = context.data, action) => {
       const { payload } = action
 
-      console.log(payload)
       switch(action.type) {
             case ADD_TASK:
-                  console.log(payload)
                   return state.concat(payload)
                   break
             case DELETE_ITEM:

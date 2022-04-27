@@ -1,9 +1,5 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { MenuItem } from 'react-native-material-menu';
-
-/*
- * 8) calendar migration form ***
-*/
 
 export default ({ id, setVisibility, setSelectedItem, toggle, text }) => {
 

@@ -9,7 +9,6 @@ export default ({ name, toForm }) => {
     setIsEnabled(previousState => !previousState);
     toForm(isEnabled, name)
   }
-  // bug: no puede ser cumpleaños y rutina al mismo tiempo
 
   return (
     <View style={styles.container}>

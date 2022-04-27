@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import BottomCard from './BottomCard'
 import DropdownMenu from './DropdownMenu'
 
-export default ({ route, item, setVisibility, setSelectedItem }) => {
+export default ({ children, route, item, setVisibility, setSelectedItem }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
@@ -12,19 +12,13 @@ export default ({ route, item, setVisibility, setSelectedItem }) => {
       onPress={() => alert('Pressed!')}
       style={ styles.card }
     >
-      <Text style={ styles.title }>
-        { item.title }
-      </Text>
+      { children }
       <DropdownMenu 
 				id={ item.id } 
 				route={ route } 
 				setModalVisibility={ setVisibility } 
         setSelectedItem={setSelectedItem}
 			/>
-      <Text style={ styles.body }>
-        { item.description }
-      </Text>
-      <BottomCard tags={ item.tags } priority={ item.priority }/>
     </TouchableOpacity>
     );
 }
@@ -38,13 +32,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 20,
   },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5, 
-  },
-  body: {
-    marginBottom: 10,
-    paddingRight: 20
-  }
 });

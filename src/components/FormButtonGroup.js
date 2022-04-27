@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { View, StyleSheet } from 'react-native'
 import RadioGroup from 'react-native-radio-buttons-group';
 
@@ -26,26 +25,26 @@ const radioButtonsData = [
         //},
 ]
 
-export default ({ toForm }) => {
-    const [radioButtons, setRadioButtons] = useState(radioButtonsData)
+export default ({ toForm, buttons, returnedKey }) => {
 
-    const onPressRadioButton = (radioButtonsArray) => {
-        setRadioButtons(radioButtonsArray);
-        toForm(radioButtons, radioButtonsArray.value)
+    const onPressRadioButton = (btns) => {
+        const selectedOption = btns.find(x => x.selected)
+        toForm(selectedOption.selected, selectedOption.value)
     }
 
     return (
         <RadioGroup 
-            radioButtons={radioButtons} 
+            radioButtons={buttons} 
             onPress={onPressRadioButton} 
             layout='row'
-            style={ styles.btnGroup }
+            containerStyle={ styles.btnGroup }
         />
     );
 }
 
 const styles = StyleSheet.create({
     btnGroup: {
-        maxWidth: '80%'
+        marginVertical: 15,
+        alignItems: 'stretch'
     }
 })

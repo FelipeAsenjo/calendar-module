@@ -4,7 +4,7 @@ import { Agenda } from 'react-native-calendars'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
-import TaskCard from '../components/TaskCard'
+import TaskItem from '../components/TaskItem'
 import AddButton from '../components/AddButton'
 import ModalCreateSchedule from '../components/ModalCreateSchedule'
 
@@ -41,11 +41,12 @@ const Calendar = ({ route, data }) => {
           monthTextColor: colors.light,
         }}
         items={ formatedData } 
-        renderItem={( item ) => <TaskCard 
+        renderItem={( item ) => <TaskItem 
             item={ item } 
             route={ route.name } 
           />
         }
+        //markingType={'multi-dot'}
         showOnlySelectedDayItems={ true }
       />
       <AddButton 
@@ -56,7 +57,6 @@ const Calendar = ({ route, data }) => {
         setVisibility={setModalVisibility}
         route={route.name}
       />
-
     </CustomView> 
   );
 }

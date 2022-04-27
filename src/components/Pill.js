@@ -1,9 +1,8 @@
 import { StyleSheet, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
-export default (props) => {
+export default ({ tag, background }) => {
   const { colors } = useTheme()
-  const { tag, background } = props
 
   return (
     <Text 

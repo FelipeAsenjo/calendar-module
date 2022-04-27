@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { View } from 'react-native'
 import Modal from './Modal'
 import FormInput from './FormInput'
 import DateTimePicker from './DateTimePicker'
@@ -15,8 +14,6 @@ export default ({ visible, setVisibility, route }) => {
       [name]: text,
       isTodo
     })
-
-    console.log(formInfo)
   }
 
   return (
@@ -38,6 +35,7 @@ export default ({ visible, setVisibility, route }) => {
         name='description' 
         text='Description' 
         onChangeText={(text) => handleChange(text, 'description')} 
+        multiline={true}
       />
     </Modal>
   )
