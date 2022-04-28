@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text } from 'react-native';
+import { connect } from 'react-redux'
 
 import TaskCard from './TaskCard'
 import BottomCard from './BottomCard'
 
-export default ({ route, item, setVisibility, setSelectedItem }) => {
+const TaskItem = ({ route, item, tags, setVisibility, setSelectedItem }) => {
+  const itemTags = tags.filter(x => item.tags.includes(x.id))
+
   return (
     <TaskCard
       item={ item.id }
@@ -19,7 +22,7 @@ export default ({ route, item, setVisibility, setSelectedItem }) => {
         <Text style={ styles.body }>
           { item.description }
         </Text> }
-      <BottomCard tags={ item.tags } priority={ item.priority }/>
+      <BottomCard tags={ itemTags } priority={ item.priority }/>
     </TaskCard>
     );
 }
@@ -35,3 +38,9 @@ const styles = StyleSheet.create({
     paddingRight: 20
   }
 });
+
+const mapStateToProps = state => ({
+  tags: state.tags
+})
+
+export default connect(mapStateToProps)(TaskItem)

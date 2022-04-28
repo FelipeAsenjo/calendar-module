@@ -11,7 +11,6 @@ export default ({ route, item, setVisibility, setSelectedItem }) => {
       //setVisibility={ setVisibility }
       //setSelectedItem={ setSelectedItem }
       route={ route }
-      style={ styles.container }
     >
       <Feather name="tag" size={24} color={ item.color } />
       <Text style={ styles.title }>
@@ -22,15 +21,9 @@ export default ({ route, item, setVisibility, setSelectedItem }) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'stretch',
-    width: '100%'
-  },
   title: {
-    fontSize: 16,
+    marginLeft: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5, 
   }

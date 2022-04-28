@@ -5,12 +5,15 @@ import BottomCard from './BottomCard'
 import DropdownMenu from './DropdownMenu'
 
 export default ({ children, route, item, setVisibility, setSelectedItem }) => {
+
+  const conditionalStyle = route === 'Tags' ? {flexDirection: 'row'} : {}
+
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       underlayColor="#DDDDDD"
       onPress={() => alert('Pressed!')}
-      style={ styles.card }
+      style={[ styles.card, conditionalStyle ]}
     >
       { children }
       <DropdownMenu 

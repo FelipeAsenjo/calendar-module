@@ -12,7 +12,7 @@ const context = {
        period: {},
        date: '2022-04-19',
        time: null,
-       tags: ['Home'],
+       tags: ['1'],
        priority: 1000
       },
       {
@@ -25,7 +25,7 @@ const context = {
        period: {},
        date: '2022-04-17',
        time: null,
-       tags: ['Work'],
+       tags: ['2'],
        priority: 600
       },
       {
@@ -38,7 +38,7 @@ const context = {
        period: {},
        date: '2022-04-18',
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['1', '3'],
        priority: 1000
       },
       {
@@ -51,7 +51,7 @@ const context = {
        period: {},
        date: '2022-04-18',
        time: null,
-       tags: ['Work', 'Idea'],
+       tags: ['2', '3'],
        priority: 700
       },
       {
@@ -64,7 +64,7 @@ const context = {
        period: {},
        date: '2022-04-17',
        time: null,
-       tags: ['Home'],
+       tags: ['1'],
        priority: 500
       },
       {
@@ -77,7 +77,7 @@ const context = {
        period: {},
        date: '2022-04-19',
        time: null,
-       tags: ['Home'],
+       tags: ['4'],
        priority: 200
       },
       {
@@ -90,7 +90,7 @@ const context = {
        period: {},
        date: '2022-04-18',
        time: null,
-       tags: ['Work', 'Idea'],
+       tags: ['2', '4'],
        priority: 300
       },
       {
@@ -103,7 +103,7 @@ const context = {
        period: {},
        date: '2022-04-18',
        time: null,
-       tags: ['Work', 'Idea'],
+       tags: ['2', '5'],
        priority: 400
       },
       {
@@ -116,7 +116,7 @@ const context = {
        period: {},
        date: '2022-04-19',
        time: null,
-       tags: ['Work'],
+       tags: ['5'],
        priority: 600
       },
       {
@@ -129,7 +129,7 @@ const context = {
        period: {},
        date: '2022-04-19',
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['4', '3'],
        priority: 100
       },
       {
@@ -142,7 +142,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['2', '4'],
        priority: 800
       },
       {
@@ -155,7 +155,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['2', '3'],
        priority: 300
       },
       {
@@ -168,7 +168,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['1', '4'],
        priority: 200
       },
       {
@@ -181,7 +181,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['1', '2'],
        priority: 800
       },
       {
@@ -194,7 +194,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['2', '4'],
        priority: 500
       },
       {
@@ -207,7 +207,7 @@ const context = {
        period: {},
        date: null,
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['3', '4'],
        priority: 1000
       },
       {
@@ -220,7 +220,7 @@ const context = {
        period: {},
        date: '2022-04-28',
        time: null,
-       tags: ['Home', 'Idea'],
+       tags: ['1', '4'],
        priority: 200
       },
       {
@@ -233,7 +233,7 @@ const context = {
        period: {},
        date: '2022-04-27',
        time: null,
-       tags: ['Home', 'Work'],
+       tags: ['2', '3'],
        priority: 700
       },
    ]

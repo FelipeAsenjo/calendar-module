@@ -4,12 +4,12 @@ import { useTheme } from '@react-navigation/native';
 
 import Pill from './Pill'
 
-export default (props) => {
+export default ({ tags, priority }) => {
   const { colors } = useTheme()
-  const { tags, priority } = props
+
   return (
     <View style={ styles.container }> 
-      { tags.map( (tag, idx) => <Pill background={ colors.secondary } tag={ tag } key={ idx }/>) }
+      { tags.map( (tag, idx) => <Pill background={ tag.color } tag={ tag.title } key={ idx }/>) }
       <Text style={ [styles.priority, {color: colors.taskDone}] }>{ priority }</Text>
     </View>
   );

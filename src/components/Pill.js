@@ -15,8 +15,10 @@ export default ({ tag, background }) => {
 const styles = StyleSheet.create({
   pill: {
     marginRight: 5,
-    paddingHorizontal: 5,
+    paddingVertical: 1,
+    paddingHorizontal: 8,
     borderRadius: 15,
     fontSize: 12,
+    fontWeight: 'bold'
   }
 })
