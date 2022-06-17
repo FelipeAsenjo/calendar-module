@@ -17,7 +17,7 @@ export default ({ children, route, item, setVisibility, setSelectedItem }) => {
     >
       { children }
       <DropdownMenu 
-				id={ item.id } 
+				id={ item } 
 				route={ route } 
 				setModalVisibility={ setVisibility } 
         setSelectedItem={setSelectedItem}

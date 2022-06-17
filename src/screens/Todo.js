@@ -39,7 +39,7 @@ const Todo = ({ route, data }) => {
       <ModalToCalendar
         visible={toCalendarVisibility}
         setVisibility={setToCalendarVisibility}
-        selectedItem={selectedItem}
+        id={selectedItem}
       />
       <ModalNewNoteTodo
         visible={addNewVisibility}

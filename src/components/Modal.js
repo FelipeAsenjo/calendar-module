@@ -1,43 +1,6 @@
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
-import { connect } from 'react-redux'
-import FormButton from './FormButton'
 
-import { toCalendar, addTask, editTask } from '../reducers/tasks'
-import { createNewTask } from '../utils/taskModifiers'
-
-const CustomModal = (props) => {
-  const { 
-    children,
-    visible,
-    setVisibility,
-    title,
-    from,
-    formInfo,
-    id,
-    toCalendar,
-    add,
-    edit
-  } = props
-
-  const handleCancel = () => setVisibility(false)
-
-  const handleSubmit = () => {
-    const templateItem = createNewTask()
-
-    if(from === 'toCalendar') {
-      toCalendar(id, formInfo.date, formInfo.time)
-    }
-    if(from === 'createTask') {
-      const newItem = { ...templateItem, ...formInfo }
-      add(newItem)
-    }
-    if(from === 'editTask') {
-      edit(id, modifiedItem)
-    }
-
-    setVisibility(false)
-  }
-  
+export default ({ children, visible, title }) => {
   return (
     <Modal
       animationType="slide"
@@ -48,10 +11,6 @@ const CustomModal = (props) => {
         <View style={ styles.modalView }>
           <Text style={styles.header}>{title}</Text>
           { children }
-          <View style={styles.buttonContainer}>
-            <FormButton text='Cancel' color='primary' onPress={handleCancel} />
-            <FormButton text='Submit' color='secondary' onPress={handleSubmit}/>
-          </View>
         </View>
       </View>
     </Modal>
@@ -84,18 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 10,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%'
   }
 })
 
-const mapDispatchToProps = dispatch => ({
-  toCalendar: (id, date, time) => dispatch(toCalendar(id, date, time)),
-  edit: (id, modifiedItem) => dispatch(editTask(id, modifiedItem)),
-  add: (newItem) => dispatch(addTask(newItem))
-})
-
-export default connect(null, mapDispatchToProps)(CustomModal)

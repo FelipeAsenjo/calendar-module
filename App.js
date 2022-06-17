@@ -43,7 +43,7 @@ export default function App() {
 		return (
 				<Provider store={store}>
 						<NavigationContainer theme={ MyTheme }>
-							<Drawer.Navigator initialRouteName='Tags' 
+							<Drawer.Navigator initialRouteName='Todo' 
 								screenOptions = {{
 									headerStyle: {
 										backgroundColor: '#931323'
