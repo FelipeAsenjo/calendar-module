@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { Text, View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 

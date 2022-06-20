@@ -11,7 +11,7 @@ export default ({ setModalVisibility }) => {
       style={ [styles.button, {backgroundColor: colors.secondary, color: colors.light}] }
       onPress={() => setModalVisibility(true)}
     >
-      <Feather name='plus' size={ 54 } color={ colors.light } />
+      <Feather name='plus' size={ 40 } color={ colors.light } />
     </TouchableOpacity>
   );
 }
@@ -19,7 +19,7 @@ export default ({ setModalVisibility }) => {
 const styles = StyleSheet.create({
   button: {
     position: 'absolute',
-    right: 25,
+    alignSelf: 'center',
     bottom: 25,
     padding: 15,
     borderRadius: 50,

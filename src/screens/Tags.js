@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
 import TagsItem from '../components/TagsItem'
 
-const Tags = ({ route, tags }) => {
+export default ({ route }) => {
+  const tags = useSelector( state => state.tags )
   const { colors } = useTheme()
 
   const renderItem = ({ item }) => (
 		    <TagsItem 
 						item={ item } 
 						route={ route.name } 
-						//setVisibility={ setToCalendarVisibility } 
-            //setSelectedItem={ setSelectedItem }
 						key={ item.id } 
 				/>
 		)
@@ -39,8 +38,3 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = state => ({
-  tags: state.tags
-})
-
-export default connect(mapStateToProps)(Tags)

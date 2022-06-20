@@ -1,15 +1,12 @@
-import React from 'react'
 import { StyleSheet, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import TaskCard from './TaskCard'
 
-export default ({ route, item, setVisibility, setSelectedItem }) => {
+export default ({ route, item }) => {
   return (
     <TaskCard
       item={ item.id }
-      //setVisibility={ setVisibility }
-      //setSelectedItem={ setSelectedItem }
       route={ route }
     >
       <Feather name="tag" size={24} color={ item.color } />

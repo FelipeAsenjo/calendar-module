@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Agenda } from 'react-native-calendars'
 import { useTheme } from '@react-navigation/native';
 
@@ -23,7 +23,8 @@ const renderCalendar = data => {
     return agendaFormat
   }
 
-const Calendar = ({ route, data }) => {
+export default ({ route }) => {
+  const data = useSelector( state => state.tasks )
   const [modalVisibility, setModalVisibility] = useState(false)
   const { colors } = useTheme()
 
@@ -61,8 +62,3 @@ const Calendar = ({ route, data }) => {
   );
 }
 
-const mapStateToProps = state => {
-  return { data: state.tasks }
-}
-
-export default connect(mapStateToProps)(Calendar)

@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { MenuItem } from 'react-native-material-menu';
 
 export default ({ id, setVisibility, setSelectedItem, toggle, text }) => {

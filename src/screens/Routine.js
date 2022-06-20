@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
 import TaskItem from '../components/TaskItem'
 
-const Routine = ({ route, data }) => {
+export default ({ route }) => {
+  const data = useSelector( state => state.tasks )
   const { colors } = useTheme()
 
   const routines = data.filter(x => x.hasPeriod)
@@ -15,8 +16,6 @@ const Routine = ({ route, data }) => {
       <TaskItem 
           item={ item } 
           route={ route.name } 
-          //setVisibility={ setToCalendarVisibility } 
-          //setSelectedItem={ setSelectedItem }
           key={ item.id } 
       />
   )
@@ -41,8 +40,3 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = state => ({
-  data: state.tasks
-})
-
-export default connect(mapStateToProps)(Routine)

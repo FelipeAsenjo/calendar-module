@@ -1,13 +1,13 @@
-import { useContext } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { MenuItem } from 'react-native-material-menu';
 
 import { toNote, toTodo } from '../reducers/tasks'
 
-const DropdownNoteTodo = ({ id, isTodo, toggle, text, toTodo, toNote }) => {
+export default ({ id, isTodo, toggle, text }) => {
+  const dispatch = useDispatch()
 
   const handlePress = () => {
-    { isTodo ? toTodo(id) : toNote(id) }
+    { isTodo ? dispatch(toTodo(id)) : dispatch(toNote(id)) }
 
     toggle()
     alert(`${isTodo ? "To do" : "Note"} has been successfully created`)
@@ -18,9 +18,3 @@ const DropdownNoteTodo = ({ id, isTodo, toggle, text, toTodo, toNote }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  toTodo: (id) => dispatch(toTodo(id)),
-  toNote: (id) => dispatch(toNote(id)),
-})
-
-export default connect(null, mapDispatchToProps)(DropdownNoteTodo)

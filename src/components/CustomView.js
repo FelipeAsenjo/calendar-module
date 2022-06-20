@@ -1,9 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
-export default (props) => {
+export default ({ children }) => {
   const { colors } = useTheme()
-  const { children } = props
 
   return (
     <View 

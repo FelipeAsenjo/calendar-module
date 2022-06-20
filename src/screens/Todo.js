@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { StyleSheet, FlatList } from 'react-native';
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useTheme } from '@react-navigation/native';
 
 import CustomView from '../components/CustomView'
@@ -9,10 +9,11 @@ import AddButton from '../components/AddButton'
 import ModalNewNoteTodo from '../components/ModalNewNoteTodo'
 import ModalToCalendar from '../components/ModalToCalendar'
 
-const Todo = ({ route, data }) => {
-  const [selectedItem, setSelectedItem] = useState()
+export default ({ route }) => {
+  const data = useSelector( state => state.tasks )
   const [addNewVisibility, setAddNewVisibility] = useState(false)
   const [toCalendarVisibility, setToCalendarVisibility] = useState(false)
+  const [selectedItem, setSelectedItem] = useState()
   const { colors } = useTheme()
 
   const todos = data.filter( x => x.isTodo ).sort((a, b) => b.priority - a.priority)
@@ -59,8 +60,3 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return { data: state.tasks }
-}
-
-export default connect(mapStateToProps)(Todo)

@@ -1,10 +1,9 @@
-import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import BottomCard from './BottomCard'
 import DropdownMenu from './DropdownMenu'
 
-export default ({ children, route, item, setVisibility, setSelectedItem }) => {
+export default ({ children, route, id, setVisibility, setSelectedItem }) => {
 
   const conditionalStyle = route === 'Tags' ? {flexDirection: 'row'} : {}
 
@@ -17,7 +16,7 @@ export default ({ children, route, item, setVisibility, setSelectedItem }) => {
     >
       { children }
       <DropdownMenu 
-				id={ item } 
+				id={ id } 
 				route={ route } 
 				setModalVisibility={ setVisibility } 
         setSelectedItem={setSelectedItem}
