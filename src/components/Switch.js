@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { View, Switch, Text, StyleSheet } from 'react-native'
-import { useTheme } from '@react-navigation/native'
+import { useState } from "react";
+import { View, Switch, Text, StyleSheet } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default ({ name, toForm }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
-    setIsEnabled(previousState => !previousState);
-    toForm(isEnabled, name)
-  }
+    setIsEnabled((previousState) => !previousState);
+    toForm(isEnabled, name);
+  };
 
   return (
     <View style={styles.container}>
@@ -18,21 +18,21 @@ export default ({ name, toForm }) => {
         ios_backgroundColor="#3e3e3e"
         onValueChange={toggleSwitch}
         value={isEnabled}
-        style={ styles.switch }
+        style={styles.switch}
       />
-      <Text>{ `Is ${name.slice(2)}?` }</Text>
-    </View> 
-  )
-}
+      <Text>{`Is ${name.slice(2)}?`}</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   switch: {
     margin: 5,
-  }
-})
+  },
+});

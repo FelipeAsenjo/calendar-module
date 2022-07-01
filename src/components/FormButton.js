@@ -1,19 +1,19 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default ({ text, color, ...rest }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   const dynamicStyles = {
     backgroundColor: colors[color],
-  }
+  };
 
   return (
     <TouchableOpacity style={[styles.button, dynamicStyles]} {...rest}>
-      <Text style={[styles.buttonText, {color: colors.light}]}>{ text }</Text>
+      <Text style={[styles.buttonText, { color: colors.light }]}>{text}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   button: {
@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    fontWeight: 'bold',
-  }
-})
+    fontWeight: "bold",
+  },
+});

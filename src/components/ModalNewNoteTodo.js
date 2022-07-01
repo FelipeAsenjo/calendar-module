@@ -41,12 +41,12 @@ export default ({ visible, setVisibility, route }) => {
       <FormInput
         autoFocus={true}
         name="title"
-        placeholder='Title...'
+        placeholder="Title..."
         onChangeText={(text) => handleChange(text, "title")}
       />
       <FormInput
         name="description"
-        placeholder='Description...'
+        placeholder="Description..."
         onChangeText={(text) => handleChange(text, "description")}
         multiline
         numberOfLines={10}

@@ -2,19 +2,18 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import Modal from "./Modal";
+import FormInput from "./FormInput";
 import FormButton from "./FormButton";
-import DateTimePicker from "./DateTimePicker";
-import { createNewTask } from "../utils/taskModifiers";
-import { toCalendar } from "../reducers/tasks";
+import { createTag } from "../reducers/tags";
 
-export default ({ visible, setVisibility, id }) => {
+export default ({ visible, setVisibility }) => {
   const [formInfo, setFormInfo] = useState({});
   const dispatch = useDispatch();
 
   const handleCancel = () => setVisibility(false);
 
   const handleSubmit = () => {
-    dispatch(toCalendar(id, formInfo.date, formInfo.time));
+    dispatch(createTag(formInfo));
     setVisibility(false);
   };
 
@@ -26,11 +25,13 @@ export default ({ visible, setVisibility, id }) => {
   };
 
   return (
-    <Modal visible={visible} title="Create Task" transparency={true}>
-      <View style={styles.buttonContainer}>
-        <DateTimePicker mode="date" toForm={handleChange} />
-        <DateTimePicker mode="time" toForm={handleChange} />
-      </View>
+    <Modal visible={visible} title="Create Tag" transparency={true}>
+      <FormInput
+        autoFocus={true}
+        name="tag"
+        placeholder="Tag name..."
+        onChangeText={(text) => handleChange(text, "title")}
+      />
       <View style={styles.buttonContainer}>
         <FormButton text="Cancel" color="primary" onPress={handleCancel} />
         <FormButton text="Submit" color="secondary" onPress={handleSubmit} />

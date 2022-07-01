@@ -46,7 +46,7 @@ export default function App() {
       <SelectProvider>
         <NavigationContainer theme={MyTheme}>
           <Drawer.Navigator
-            initialRouteName="Calendar"
+            initialRouteName="Tags"
             screenOptions={{
               headerStyle: {
                 backgroundColor: "#931323",

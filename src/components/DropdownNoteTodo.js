@@ -1,20 +1,23 @@
-import { useDispatch } from 'react-redux'
-import { MenuItem } from 'react-native-material-menu';
+import { useDispatch } from "react-redux";
+import { MenuItem } from "react-native-material-menu";
 
-import { toNote, toTodo } from '../reducers/tasks'
+import { toNote, toTodo } from "../reducers/tasks";
 
-export default ({ id, isTodo, toggle, text }) => {
-  const dispatch = useDispatch()
+export default ({ id, isTodo, toggle }) => {
+  const dispatch = useDispatch();
 
   const handlePress = () => {
-    { isTodo ? dispatch(toTodo(id)) : dispatch(toNote(id)) }
+    {
+      isTodo ? dispatch(toTodo(id)) : dispatch(toNote(id));
+    }
 
-    toggle()
-    alert(`${isTodo ? "To do" : "Note"} has been successfully created`)
-  }
+    toggle();
+    alert(`${isTodo ? "To do" : "Note"} has been successfully created`);
+  };
 
-  return ( 
-      <MenuItem onPress={handlePress}>{ text }</MenuItem>
-  )
-}
-
+  return (
+    <MenuItem onPress={handlePress}>
+      {isTodo ? "Create To do" : "Create Note"}
+    </MenuItem>
+  );
+};

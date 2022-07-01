@@ -1,16 +1,20 @@
-import { StyleSheet, Text } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { StyleSheet, Text } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default ({ tag, background }) => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   return (
-    <Text 
-      style={ [styles.pill, {backgroundColor: background, color: colors.light}] }>
-        { tag }
+    <Text
+      style={[
+        styles.pill,
+        { backgroundColor: background, color: colors.light },
+      ]}
+    >
+      {tag}
     </Text>
   );
-}
+};
 
 const styles = StyleSheet.create({
   pill: {
@@ -19,6 +23,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: 15,
     fontSize: 12,
-    fontWeight: 'bold'
-  }
-})
+    fontWeight: "bold",
+  },
+});

@@ -15,7 +15,7 @@ const DELETE_TAG = "DELETE_TAG";
 const EDIT_TAG = "EDIT_TAG";
 
 export const createTag = (newItem) => ({
-  type: CREATE_TASK,
+  type: CREATE_TAG,
   payload: {
     ...newItem,
     id: uuid.v4(),
