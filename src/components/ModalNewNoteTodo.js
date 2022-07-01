@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import FormButton from "./FormButton";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
-import DateTimePicker from "./DateTimePicker";
 import Select from "./Select";
 import { createNewTask } from "../utils/taskModifiers";
 import { addTask } from "../reducers/tasks";
 
 export default ({ visible, setVisibility, route }) => {
-  const tags = useSelector((state) => state.tags);
   const [formInfo, setFormInfo] = useState({});
   const [selectedTags, setSelectedTags] = useState([]);
   const dispatch = useDispatch();

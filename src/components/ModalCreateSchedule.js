@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import Modal from "./Modal";
 import FormInput from "./FormInput";

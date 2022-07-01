@@ -10,7 +10,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-19',
+       date: '2022-07-04',
        time: null,
        tags: ['1'],
        priority: 1000
@@ -23,7 +23,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-16',
+       date: '2022-07-01',
        time: null,
        tags: ['2'],
        priority: 600
@@ -36,7 +36,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-18',
+       date: '2022-07-03',
        time: null,
        tags: ['1', '3'],
        priority: 1000
@@ -49,7 +49,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-18',
+       date: '2022-07-03',
        time: null,
        tags: ['2', '3'],
        priority: 700
@@ -62,7 +62,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-16',
+       date: '2022-07-01',
        time: null,
        tags: ['1'],
        priority: 500
@@ -75,7 +75,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-19',
+       date: '2022-07-04',
        time: null,
        tags: ['4'],
        priority: 200
@@ -88,7 +88,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-18',
+       date: '2022-07-03',
        time: null,
        tags: ['2', '4'],
        priority: 300
@@ -101,7 +101,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-18',
+       date: '2022-07-03',
        time: null,
        tags: ['2', '5'],
        priority: 400
@@ -114,7 +114,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-19',
+       date: '2022-07-04',
        time: null,
        tags: ['5'],
        priority: 600
@@ -127,7 +127,7 @@ const context = {
        completed: false,
        hasPeriod: false,
        period: {},
-       date: '2022-06-19',
+       date: '2022-07-04',
        time: null,
        tags: ['4', '3'],
        priority: 100
@@ -218,7 +218,7 @@ const context = {
        completed: false,
        hasPeriod: true,
        period: {},
-       date: '2022-06-28',
+       date: '2022-07-15',
        time: null,
        tags: ['1', '4'],
        priority: 200
@@ -231,7 +231,7 @@ const context = {
        completed: false,
        hasPeriod: true,
        period: {},
-       date: '2022-06-27',
+       date: '2022-07-14',
        time: null,
        tags: ['2', '3'],
        priority: 700

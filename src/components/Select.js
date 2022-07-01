@@ -6,7 +6,7 @@ import {
 
 export default ({ setSelectedTags }) => {
   const tags = useSelector((state) => state.tags);
-  
+
   return (
     <SelectModalProvider>
       <Select
@@ -14,13 +14,12 @@ export default ({ setSelectedTags }) => {
           value: tag.id,
           label: tag.title,
         }))}
-        //clearable={true}
         multiSelection={true}
         closeDropdownOnSelect={false}
         placeholderText={"Select tags"}
-        //searchable={true}
+        selectControlTextStyle={{ fontSize: 16 }}
+        optionTextStyle={{ fontSize: 16 }}
         selectContainerStyle={{ width: "100%", marginVertical: 10 }}
-        //selectControlStyle={{ width: 200 }}
         defaultOption={[]}
         onSelect={(options) =>
           setSelectedTags((currentTags) => currentTags.concat(options.value))
