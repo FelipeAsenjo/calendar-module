@@ -1,25 +1,30 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { StyleSheet, View } from 'react-native'
+import { useDispatch, useSelector } from "react-redux";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import FormButton from "./FormButton";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
 import DateTimePicker from "./DateTimePicker";
+import Select from "./Select";
 import { createNewTask } from "../utils/taskModifiers";
-import { addTask } from '../reducers/tasks'
+import { addTask } from "../reducers/tasks";
 
 export default ({ visible, setVisibility, route }) => {
+  const tags = useSelector((state) => state.tags);
   const [formInfo, setFormInfo] = useState({});
+  const [selectedTags, setSelectedTags] = useState([]);
   const dispatch = useDispatch();
 
   const handleCancel = () => setVisibility(false);
 
   const handleSubmit = () => {
-    const templateItem = createNewTask()
+    const templateItem = createNewTask();
 
-    const newItem = { ...templateItem, ...formInfo };
+    const newItem = { ...templateItem, ...formInfo, tags: selectedTags };
     dispatch(addTask(newItem));
 
+    setSelectedTags([]);
+    setFormInfo({});
     setVisibility(false);
   };
 
@@ -34,19 +39,21 @@ export default ({ visible, setVisibility, route }) => {
   };
 
   return (
-    <Modal visible={visible} title={`Create ${route}`}>
+    <Modal visible={visible} title={`Create ${route}`} transparency={false}>
       <FormInput
         autoFocus={true}
         name="title"
-        text="Title"
+        placeholder='Title...'
         onChangeText={(text) => handleChange(text, "title")}
       />
       <FormInput
         name="description"
-        text="Description"
+        placeholder='Description...'
         onChangeText={(text) => handleChange(text, "description")}
-        multiline={true}
+        multiline
+        numberOfLines={10}
       />
+      <Select setSelectedTags={setSelectedTags} />
       <View style={styles.buttonContainer}>
         <FormButton text="Cancel" color="primary" onPress={handleCancel} />
         <FormButton text="Submit" color="secondary" onPress={handleSubmit} />

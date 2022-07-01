@@ -26,7 +26,11 @@ export default ({ visible, setVisibility, id }) => {
     }
 
     return (
-    <Modal visible={visible} title='Create Task'>
+    <Modal 
+      visible={visible} 
+      title='Create Task'
+      transparency={true}
+    >
       <View style={ styles.buttonContainer }>
         <DateTimePicker 
           mode='date' 

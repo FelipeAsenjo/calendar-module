@@ -1,15 +1,15 @@
 import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
 
-export default ({ children, visible, title }) => {
+export default ({ children, visible, title, transparency }) => {
   return (
     <Modal
       animationType="slide"
-      transparent={true}
-      visible={visible}
+      transparent={ transparency }
+      visible={ visible }
     >
-      <View style={ styles.centeredView }>
-        <View style={ styles.modalView }>
-          <Text style={styles.header}>{title}</Text>
+      <View style={ transparency && styles.centeredView }>
+        <View style={ transparency ? styles.modalView : styles.fullScreenView }>
+          <Text style={ styles.header }>{title}</Text>
           { children }
         </View>
       </View>
@@ -38,6 +38,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5
+  },
+  fullScreenView: {
+    height: Dimensions.get('window').height,
+    padding: 25,
+    alignItems: "center",
   },
   header: {
     fontSize: 32,
