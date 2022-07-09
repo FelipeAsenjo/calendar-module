@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
-import FormButton from "./FormButton";
+import SubmitButton from "./SubmitButton";
 import DateTimePicker from "./DateTimePicker";
 import Select from "./Select";
 import { createNewTask } from "../utils/taskModifiers";
@@ -35,9 +35,8 @@ export default ({ visible, setVisibility, route }) => {
   };
 
   return (
-    <Modal visible={visible} title="Create Task" transparency={false}>
+    <Modal visible={visible} title="Create Task" close={handleCancel}>
       <FormInput
-        autoFocus={true}
         name="title"
         placeholder="Title..."
         onChangeText={(text) => handleChange(text, "title")}
@@ -54,10 +53,7 @@ export default ({ visible, setVisibility, route }) => {
         <DateTimePicker mode="date" toForm={handleChange} />
         <DateTimePicker mode="time" toForm={handleChange} />
       </View>
-      <View style={styles.buttonContainer}>
-        <FormButton text="Cancel" color="primary" onPress={handleCancel} />
-        <FormButton text="Submit" color="secondary" onPress={handleSubmit} />
-      </View>
+      <SubmitButton text="Submit" color="secondary" onPress={handleSubmit} />
     </Modal>
   );
 };

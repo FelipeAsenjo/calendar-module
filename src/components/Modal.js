@@ -1,10 +1,12 @@
-import { StyleSheet, View, Text, Modal, Dimensions } from "react-native";
+import { StyleSheet, View, Text, Modal } from "react-native";
+import CancelModalButton from "./CancelModalButton";
 
-export default ({ children, visible, title, transparency }) => {
+export default ({ children, visible, title, close }) => {
   return (
-    <Modal animationType="slide" transparent={transparency} visible={visible}>
-      <View style={transparency && styles.centeredView}>
-        <View style={transparency ? styles.modalView : styles.fullScreenView}>
+    <Modal animationType="slide" visible={visible}>
+      <View style={styles.centeredView}>
+        <CancelModalButton onPress={close} />
+        <View style={styles.fullScreenView}>
           <Text style={styles.header}>{title}</Text>
           {children}
         </View>
@@ -17,26 +19,8 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-  },
-  modalView: {
-    margin: 20,
-    padding: 25,
-    width: Dimensions.get("window").width - 35,
-    backgroundColor: "white",
-    borderRadius: 20,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
   },
   fullScreenView: {
-    height: Dimensions.get("window").height,
     padding: 25,
     alignItems: "center",
   },

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, LogBox } from "react-native";
 import NativeColorPicker from "native-color-picker";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
-import FormButton from "./FormButton";
+import SubmitButton from "./SubmitButton";
 import { createTag } from "../reducers/tags";
 
 const COLORS = [
@@ -56,10 +56,13 @@ export default ({ visible, setVisibility }) => {
     });
   };
 
+  useEffect(() => {
+     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+  }, [])
+
   return (
-    <Modal visible={visible} title="Create Tag" transparency={false}>
+    <Modal visible={visible} title="Create Tag" close={handleCancel}>
       <FormInput
-        autoFocus={true}
         name="tag"
         placeholder="Tag name..."
         onChangeText={(text) => handleChange(text, "title")}
@@ -70,16 +73,12 @@ export default ({ visible, setVisibility }) => {
         gradient
         sort
         shadow
-        useNativeDriver={true}
         markerType="checkmark"
         markerDisplay="adjust"
         onSelect={(item) => setSelectedColor(item)}
         scrollEnabled={false}
       />
-      <View style={styles.buttonContainer}>
-        <FormButton text="Cancel" color="primary" onPress={handleCancel} />
-        <FormButton text="Submit" color="secondary" onPress={handleSubmit} />
-      </View>
+      <SubmitButton text="Submit" color="secondary" onPress={handleSubmit} />
     </Modal>
   );
 };
@@ -89,10 +88,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-  },
+  }
 });

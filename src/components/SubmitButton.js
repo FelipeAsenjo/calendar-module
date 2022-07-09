@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 15,
     borderRadius: 10,
+    width: '100%',
   },
   buttonText: {
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: 'center',
   },
 });
