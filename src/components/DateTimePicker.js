@@ -47,7 +47,7 @@ export default ({ mode, toForm }) => {
       {showPicker && (
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
+          value={new Date()}
           mode={mode}
           is24Hour={true}
           onChange={onChange}
