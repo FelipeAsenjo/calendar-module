@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View } from "react-native";
+import { useDispatch } from "react-redux";
 import SubmitButton from "./SubmitButton";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
@@ -43,6 +42,7 @@ export default ({ visible, setVisibility, route }) => {
         placeholder="Title..."
         onChangeText={(text) => handleChange(text, "title")}
       />
+      <Select setSelectedTags={setSelectedTags} />
       <FormInput
         name="description"
         placeholder="Description..."
@@ -50,7 +50,6 @@ export default ({ visible, setVisibility, route }) => {
         multiline
         numberOfLines={10}
       />
-      <Select setSelectedTags={setSelectedTags} />
       <SubmitButton text="Submit" color="secondary" onPress={handleSubmit} />
     </Modal>
   );

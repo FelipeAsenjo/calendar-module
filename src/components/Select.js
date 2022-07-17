@@ -12,7 +12,7 @@ export default ({ setSelectedTags }) => {
       <Select
         options={tags.map((tag) => ({
           value: tag.id,
-          label: tag.title,
+          label: tag.item,
         }))}
         multiSelection={true}
         closeDropdownOnSelect={false}

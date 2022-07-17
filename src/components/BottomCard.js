@@ -9,7 +9,7 @@ export default ({ tags, priority }) => {
   return (
     <View style={styles.container}>
       {tags.map((tag, idx) => (
-        <Pill background={tag.color} tag={tag.title} key={idx} />
+        <Pill background={tag.color} tag={tag.item} key={idx} />
       ))}
       <Text style={[styles.priority, { color: colors.taskDone }]}>
         {priority}

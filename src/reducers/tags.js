@@ -1,13 +1,13 @@
 import uuid from "react-native-uuid";
 
 let tags = [
-  { id: "1", title: "Home", color: "red", selectedDotColor: "blue" },
-  { id: "2", title: "Work", color: "blue", selectedDotColor: "blue" },
-  { id: "3", title: "Idea", color: "purple", selectedDotColor: "purple" },
-  { id: "4", title: "Training", color: "green" },
-  { id: "5", title: "Birthday", color: "black" },
-  { id: "6", title: "DIY", color: "brown" },
-  { id: "7", title: "Personal", color: "orange" },
+  { id: "1", item: "Home", color: "red", selectedDotColor: "blue" },
+  { id: "2", item: "Work", color: "blue", selectedDotColor: "blue" },
+  { id: "3", item: "Idea", color: "purple", selectedDotColor: "purple" },
+  { id: "4", item: "Training", color: "green" },
+  { id: "5", item: "Birthday", color: "black" },
+  { id: "6", item: "DIY", color: "brown" },
+  { id: "7", item: "Personal", color: "orange" },
 ];
 
 const CREATE_TAG = "CREATE_TAG";

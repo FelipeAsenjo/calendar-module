@@ -10,7 +10,7 @@ import ModalToCalendar from "../components/ModalToCalendar";
 import ModalNewNoteTodo from "../components/ModalNewNoteTodo";
 
 export default ({ route }) => {
-  const data = useSelector( state => state.tasks )
+  const data = useSelector((state) => state.tasks);
   const [addNewVisibility, setAddNewVisibility] = useState(false);
   const [toCalendarVisibility, setToCalendarVisibility] = useState(false);
   const [selectedItem, setSelectedItem] = useState();
@@ -22,11 +22,11 @@ export default ({ route }) => {
 
   const renderItem = ({ item }) => (
     <TaskItem
-      item={ item }
-      route={ route.name }
-      setVisibility={ setToCalendarVisibility }
-      setSelectedItem={ setSelectedItem }
-      key={ item.id }
+      item={item}
+      route={route.name}
+      setVisibility={setToCalendarVisibility}
+      setSelectedItem={setSelectedItem}
+      key={item.id}
     />
   );
 
@@ -50,7 +50,7 @@ export default ({ route }) => {
       />
     </CustomView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -60,4 +60,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
