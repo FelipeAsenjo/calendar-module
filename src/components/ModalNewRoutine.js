@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { Formik, Form, Field } from "formik";
-import SelectBox from "react-native-multi-selectbox";
+import { useDispatch } from "react-redux";
+import { Formik } from "formik";
 import SubmitButton from "./SubmitButton";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
 import Select from "./Select";
-import OtherSelect from "./OtherSelect";
 import { createNewTask } from "../utils/taskModifiers";
 import { addTask } from "../reducers/tasks";
 
@@ -18,7 +15,7 @@ export default ({ visible, setVisibility, route }) => {
 
   const handleFormSubmit = (values) => {
     const templateItem = createNewTask();
-    const tags = values.tags.map(tag => tag.id)
+    const tags = values.tags.map((tag) => tag.id);
 
     dispatch(addTask({ ...templateItem, ...values, hasPeriod: true, tags }));
     setVisibility(false);
@@ -41,7 +38,7 @@ export default ({ visible, setVisibility, route }) => {
               onChangeText={handleChange("title")}
               value={values.title}
             />
-            <OtherSelect
+            <Select
               setFieldValue={(value) => setFieldValue("tags", value)}
               selectedTags={values.tags}
             />

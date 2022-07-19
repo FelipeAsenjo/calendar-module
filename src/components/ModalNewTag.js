@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { StyleSheet, View, LogBox } from "react-native";
+import { StyleSheet, View, Dimensions, LogBox } from "react-native";
+import { Formik } from "formik";
 import NativeColorPicker from "native-color-picker";
 import Modal from "./Modal";
 import FormInput from "./FormInput";
@@ -36,57 +37,58 @@ const COLORS = [
 ];
 
 export default ({ visible, setVisibility }) => {
-  const [formInfo, setFormInfo] = useState({});
-  const [selectedColor, setSelectedColor] = useState("#db643a");
   const dispatch = useDispatch();
 
   const handleCancel = () => setVisibility(false);
 
-  const handleSubmit = () => {
-    const newTag = { ...formInfo, color: selectedColor };
-
-    dispatch(createTag(newTag));
+  const handleFormSubmit = (values) => {
+    dispatch(createTag(values));
     setVisibility(false);
   };
 
-  const handleChange = (text, name) => {
-    setFormInfo({
-      ...formInfo,
-      [name]: text,
-    });
-  };
-
   useEffect(() => {
-     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
-  }, [])
+    LogBox.ignoreLogs(["Animated: `useNativeDriver`"]);
+  }, []);
 
   return (
     <Modal visible={visible} title="Create Tag" close={handleCancel}>
-      <FormInput
-        name="tag"
-        placeholder="Tag name..."
-        onChangeText={(text) => handleChange(text, "title")}
-      />
-      <NativeColorPicker
-        colors={COLORS}
-        selectedColor={selectedColor}
-        gradient
-        sort
-        shadow
-        markerType="checkmark"
-        markerDisplay="adjust"
-        onSelect={(item) => setSelectedColor(item)}
-        scrollEnabled={false}
-      />
-      <SubmitButton text="Submit" color="secondary" onPress={handleSubmit} />
+      <Formik
+        initialValues={{ item: "", color: "#db643a" }}
+        onSubmit={(values) => handleFormSubmit(values)}
+      >
+        {({ handleChange, handleSubmit, values }) => (
+          <View style={styles.container}>
+            <FormInput
+              name="tag"
+              placeholder="Tag name..."
+              onChangeText={handleChange("item")}
+              value={values.item}
+            />
+            <NativeColorPicker
+              colors={COLORS}
+              selectedColor={values.color}
+              gradient
+              sort
+              shadow
+              markerType="checkmark"
+              markerDisplay="adjust"
+              onSelect={handleChange("color")}
+              scrollEnabled={false}
+            />
+            <SubmitButton
+              text="Submit"
+              color="secondary"
+              onPress={handleSubmit}
+            />
+          </View>
+        )}
+      </Formik>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-  }
+  container: {
+    width: Dimensions.get("window").width - 25,
+  },
 });

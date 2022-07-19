@@ -5,26 +5,28 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 import { formatDate, formatTime, capitalize } from "../utils/taskModifiers";
 
-export default ({ mode, toForm }) => {
+export default ({ mode, setFieldValue }) => {
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [timeLoaded, setTimeLoaded] = useState(false);
   const { colors } = useTheme();
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate !== undefined ? selectedDate : date;
+  const handleChange = (event, selectedDate) => {
+    const currentDate = selectedDate ?? date;
 
     setTimeLoaded(true);
     setShowPicker(false);
     setDate(currentDate);
 
-    const formatedData =
-      mode === "date"
-        ? formatDate(currentDate)
-        : timeLoaded
-        ? formatTime(currentDate)
-        : null;
-    toForm(formatedData, mode);
+    if (mode === "date") return setFieldValue(currentDate);
+    if (mode === "time" && timeLoaded) return setFieldValue(currentDate);
+    setFieldValue(null)
+  };
+
+  const showButtonData = () => {
+    if (mode === "date") return formatDate(date);
+    if (timeLoaded) return formatTime(date);
+    return " -- : -- : -- ";
   };
 
   return (
@@ -36,21 +38,17 @@ export default ({ mode, toForm }) => {
           onPress={() => setShowPicker(true)}
         >
           <Text style={[styles.buttonText, { color: colors.light }]}>
-            {mode === "date"
-              ? formatDate(date)
-              : !timeLoaded
-              ? " -- : -- : -- "
-              : formatTime(date)}
+            {showButtonData()}
           </Text>
         </TouchableOpacity>
       </View>
       {showPicker && (
         <DateTimePicker
           testID="dateTimePicker"
-          value={new Date()}
+          value={date}
           mode={mode}
           is24Hour={true}
-          onChange={onChange}
+          onChange={handleChange}
         />
       )}
     </>

@@ -1,30 +1,23 @@
 import { useSelector } from "react-redux";
-import {
-  Select,
-  SelectModalProvider,
-} from "@mobile-reality/react-native-select-pro";
+import { useFormikContext } from "formik"
+import SelectBox from "react-native-multi-selectbox";
+import { xorBy } from "lodash";
 
-export default ({ setSelectedTags }) => {
+export default ({ setFieldValue, selectedTags }) => {
   const tags = useSelector((state) => state.tags);
+  
+  const onMultiChange = () => {
+    return (item) => setFieldValue(xorBy(selectedTags, [item], 'id'))
+  }
 
   return (
-    <SelectModalProvider>
-      <Select
-        options={tags.map((tag) => ({
-          value: tag.id,
-          label: tag.item,
-        }))}
-        multiSelection={true}
-        closeDropdownOnSelect={false}
-        placeholderText={"Select tags"}
-        selectControlTextStyle={{ fontSize: 16 }}
-        optionTextStyle={{ fontSize: 16 }}
-        selectContainerStyle={{ width: "100%", marginVertical: 10 }}
-        defaultOption={[]}
-        onSelect={(options) =>
-          setSelectedTags((currentTags) => currentTags.concat(options.value))
-        }
-      />
-    </SelectModalProvider>
+    <SelectBox
+      label="Select tags"
+      options={tags}
+      selectedValues={selectedTags}
+      onMultiSelect={onMultiChange()}
+      onTapClose={onMultiChange()}
+      isMulti
+    />
   );
 };

@@ -7,7 +7,7 @@ export default ({ route, item }) => {
   return (
     <TaskCard id={item.id} route={route}>
       <Feather name="tag" size={24} color={item.color} />
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.item}</Text>
     </TaskCard>
   );
 };

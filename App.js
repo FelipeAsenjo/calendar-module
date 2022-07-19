@@ -46,7 +46,7 @@ export default function App() {
       <SelectProvider>
         <NavigationContainer theme={MyTheme}>
           <Drawer.Navigator
-            initialRouteName="Routine"
+            initialRouteName="Notes"
             screenOptions={{
               headerStyle: {
                 backgroundColor: "#931323",
